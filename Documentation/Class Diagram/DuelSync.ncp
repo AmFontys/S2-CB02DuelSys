@@ -1,0 +1,522 @@
+<Project>
+  <Name>DuelSync</Name>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>AllClasses</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>Account</Name>
+        <Access>Public</Access>
+        <Location left="142" top="863" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Player</Name>
+        <Access>Public</Access>
+        <Location left="142" top="582" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Staff</Name>
+        <Access>Public</Access>
+        <Location left="186" top="1245" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Tournament</Name>
+        <Access>Public</Access>
+        <Location left="770" top="740" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>ISchedule</Name>
+        <Access>Public</Access>
+        <Location left="963" top="1060" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+      </Entity>
+      <Entity type="Class">
+        <Name>Sport</Name>
+        <Access>Public</Access>
+        <Location left="741" top="1120" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>company</Name>
+        <Access>Public</Access>
+        <Location left="368" top="1295" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Match</Name>
+        <Access>Public</Access>
+        <Location left="1280" top="961" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>ITournamentType</Name>
+        <Access>Public</Access>
+        <Location left="1280" top="724" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+      </Entity>
+      <Entity type="Class">
+        <Name>RoundRobinSchedule</Name>
+        <Access>Public</Access>
+        <Location left="1014" top="1355" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>RoundRobin</Name>
+        <Access>Public</Access>
+        <Location left="1542" top="573" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Leaderboard</Name>
+        <Access>Public</Access>
+        <Location left="411" top="538" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Generalization" first="1" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>227</X>
+          <Y>838</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="2" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>233</X>
+          <Y>1104</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Association" first="2" second="6">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>449</X>
+          <Y>1270</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1..*</StartMultiplicity>
+        <EndMultiplicity>0..1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="5" second="3">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>781</X>
+          <Y>981</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="4" second="3">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>893</X>
+          <Y>981</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="3" second="7">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1016</X>
+          <Y>948</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="3" second="8">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1150</X>
+          <Y>902</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Dependency" first="3" second="1">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>329</X>
+          <Y>787</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Dependency" first="11" second="1">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+      <Relationship type="Dependency" first="11" second="3">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>842</X>
+          <Y>671</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Realization" first="9" second="4">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="10" second="8">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Tournament</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>RoundRobin</Name>
+        <Access>Public</Access>
+        <Location left="1515" top="314" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>ITournamentType</Name>
+        <Access>Public</Access>
+        <Location left="1253" top="465" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+      </Entity>
+      <Entity type="Class">
+        <Name>Match</Name>
+        <Access>Public</Access>
+        <Location left="1253" top="702" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Sport</Name>
+        <Access>Public</Access>
+        <Location left="714" top="861" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Tournament</Name>
+        <Access>Public</Access>
+        <Location left="743" top="481" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Staff</Name>
+        <Access>Public</Access>
+        <Location left="352" top="1011" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>company</Name>
+        <Access>Public</Access>
+        <Location left="352" top="1308" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Player</Name>
+        <Access>Public</Access>
+        <Location left="380" top="410" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Account</Name>
+        <Access>Public</Access>
+        <Location left="464" top="700" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Association" first="4" second="3">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>0..1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="4" second="1">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>0..*</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="4" second="2">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>937</X>
+          <Y>684</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="1" second="0">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Generalization" first="5" second="8">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="7" second="8">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>426</X>
+          <Y>799</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Association" first="5" second="6">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1..*</StartMultiplicity>
+        <EndMultiplicity>0..1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="4" second="7">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Player based</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>company</Name>
+        <Access>Public</Access>
+        <Location left="890" top="1037" />
+        <Size width="236" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private string _companyName</Member>
+        <Member type="Field">private string _companyLocation</Member>
+        <Member type="Constructor">public company(string name, string location)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Staff</Name>
+        <Access>Public</Access>
+        <Location left="55" top="818" />
+        <Size width="808" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private string _employeeKey</Member>
+        <Member type="Constructor">public Staff(string name, string email, DateTime birthdate, char gender, string address, string town, string password, string employeeKey)</Member>
+        <Member type="Constructor">public Staff(string name, string email, DateTime birthdate, char gender, string address, string town, string password, string employeeKey, Company company)</Member>
+        <Member type="Method">public static void GenerateEmployeeKey(string dateUTCNow, string name, string email, string birthdate)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Account</Name>
+        <Access>Public</Access>
+        <Location left="39" top="434" />
+        <Size width="691" height="315" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private string _name</Member>
+        <Member type="Field">private string _email</Member>
+        <Member type="Field">private DateTime _birthdate</Member>
+        <Member type="Field">private char _gender</Member>
+        <Member type="Field">private string _address</Member>
+        <Member type="Field">private string _town</Member>
+        <Member type="Field">private string _password</Member>
+        <Member type="Field">private string _keyword</Member>
+        <Member type="Constructor">public Account(string name, string email, DateTime birthdate, char gender, string address, string town, string password)</Member>
+        <Member type="Method">public static string EncryptPassword(string password)</Member>
+        <Member type="Method">private static byte[] GenerateKeyword()</Member>
+        <Member type="Method">private static string GeneratePassword(string password, byte[] key)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Player</Name>
+        <Access>Public</Access>
+        <Location left="890" top="497" />
+        <Size width="691" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private string _team</Member>
+        <Member type="Constructor">public Player(string name, string email, string team, DateTime birthdate, char gender, string address, string town, string password)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>AccountManager</Name>
+        <Access>Public</Access>
+        <Location left="55" top="10" />
+        <Size width="967" height="383" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public bool AddAccount(string name, string email, string team, DateTime birthdate, char gender, string address, string town, string password)</Member>
+        <Member type="Method">public bool AddAccount(string name, string email, DateTime birthdate, char gender, string address, string town, string password, string employeeKey)</Member>
+        <Member type="Method">public bool AddAccount(string name, string email, DateTime birthdate, char gender, string address, string town, string password, string employeeKey, Company company)</Member>
+        <Member type="Method">public bool UpdateAccount(int id, string name, string email, string team, DateTime birthdate, char gender, string address, string town, string password)</Member>
+        <Member type="Method">public bool UpdateAccount(int id, string name, string email, DateTime birthdate, char gender, string address, string town, string password, string employeeKey)</Member>
+        <Member type="Method">public bool UpdateAccount(int id, string name, string email, DateTime birthdate, char gender, string address, string town, string password, string employeeKey, Company company)</Member>
+        <Member type="Method">public List&lt;Player&gt; GetPlayers()</Member>
+        <Member type="Method">public List&lt;Account&gt; GetAccounts()</Member>
+        <Member type="Method">public List&lt;Staff&gt; GetStaff()</Member>
+        <Member type="Method">public bool DeleteAccount(int id)</Member>
+        <Member type="Method">public bool tournamentSignup(int playerId, int tournamentId)</Member>
+        <Member type="Method">public Player GetAccount(string email)</Member>
+        <Member type="Method">public Staff GetAccount(string email, string employeeKey)</Member>
+        <Member type="Method">public bool Login(string email, string password)</Member>
+        <Member type="Method">public bool Login(string email, string password, string employeeKey)</Member>
+        <Member type="Method">private bool CheckValidEmail(string email, out string key)</Member>
+        <Member type="Method">private bool CheckValidPassword(string email, string password)</Member>
+        <Member type="Method">private bool CheckEmployeeKey(string email, string password, string key)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>AccountDAL</Name>
+        <Access>Public</Access>
+        <Location left="1749" top="60" />
+        <Size width="356" height="158" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">private bool CheckSingleResult(MySQlCommand command)</Member>
+        <Member type="Method">private DataSet CheckMultipleResults(MySQlCommand command)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IAccountDAL</Name>
+        <Access>Public</Access>
+        <Location left="1147" top="115" />
+        <Size width="434" height="299" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">bool AddAccount(Player account)</Member>
+        <Member type="Method">bool AddAccount(Staff staff)</Member>
+        <Member type="Method">bool UpdateAccount(Player player)</Member>
+        <Member type="Method">bool UpdateAccount(Staff staff)</Member>
+        <Member type="Method">DataSet GetPlayers()</Member>
+        <Member type="Method">DateSet GetAccounts()</Member>
+        <Member type="Method">DataSet GetStaff()</Member>
+        <Member type="Method">bool DeleteAccount(int id)</Member>
+        <Member type="Method">bool tournamentSignup(int playerId, int tournamentId)</Member>
+        <Member type="Method">DataSet GetAccount(string email)</Member>
+        <Member type="Method">DataSet GetAccount(string email, string employeeKey)</Member>
+        <Member type="Method">bool CheckValidEmail(string email, out string key)</Member>
+        <Member type="Method">bool CheckValidPassword(string email, string password)</Member>
+        <Member type="Method">bool CheckEmployeeKey(string email, string password, string key)</Member>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Generalization" first="3" second="2">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>865</X>
+          <Y>644</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>763</X>
+          <Y>644</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="1" second="2">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Association" first="1" second="0">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>0..*</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="4" second="2">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>242</X>
+          <Y>402</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="4" second="6">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Realization" first="5" second="6">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+</Project>
