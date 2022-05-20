@@ -7,10 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\account\" />
-    <Folder Include="Pages\schedule\" />
     <Folder Include="Pages\tournament\" />
     <Folder Include="Pages\Shared\Theme\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DualSysClassLibrary\DuelSysClassLibrary.csproj" />
   </ItemGroup>
 
 </Project>

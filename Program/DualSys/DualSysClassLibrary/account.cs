@@ -1,7 +1,7 @@
 ﻿namespace DualSysClassLibrary
 {
-    public class Class1
+    public class account
     {
-
+        
     }
 }
