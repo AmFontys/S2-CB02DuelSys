@@ -1,3 +1,4 @@
+using DuelSysClassLibrary;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -16,7 +17,7 @@ namespace DuelSysWeb.Pages
         [BindProperty]
         public DateTime Birthdate { get; set; }
         [BindProperty]
-        public string Gender { get; set; }
+        public char Gender { get; set; }
         [BindProperty]
         public string Address { get; set; }
         [BindProperty]
@@ -25,6 +26,20 @@ namespace DuelSysWeb.Pages
         public string Team { get; set; }
         public void OnGet()
         {
+        }
+
+        public IActionResult OnPost()
+        {
+            if (ModelState.IsValid)
+            {
+                AccountDAL dal = new();
+                AccountManager manager = new(dal);
+                if (manager.AddAccount(Fname, Lname, Email, Team, Birthdate, Gender, Address, Town, Password)) {              
+                    return RedirectToPage("~/");
+                }
+                else return RedirectToPage("~/register");
+            }
+            else return Page();
         }
     }
 }
