@@ -11,7 +11,7 @@ namespace  DuelSysClassLibrary
         {
 			_dAL = dal;
         }
-		public bool AddAccount(string fname, string lname, string email, string team, DateTime birthdate, char gender, string address, string town, string password)
+		public bool AddAccount(string fname, string lname, string email, string team, DateTime birthdate, char gender, string address,string town, string password)
 		{
 			string encrytptPassword= Player.EncryptPassword(password, out string keyword);
 			Player player = new Player(fname, lname, email, team, birthdate, gender, address, town, encrytptPassword,keyword);
@@ -19,12 +19,7 @@ namespace  DuelSysClassLibrary
 			return _dAL.AddAccount(player);
 		}
 
-		public bool AddAccount(string fname, string lname, string email, DateTime birthdate, char gender, string address, string town, string password, string employeeKey)
-		{
-			throw new NotImplementedException();
-		}
-
-		public bool AddAccount(string fname, string lname, string email, DateTime birthdate, char gender, string address, string town, string password, string employeeKey, company company)
+		public bool AddAccount(string fname, string lname, string email, DateTime birthdate, char gender, string address, string town, string password, company company)
 		{
 			throw new NotImplementedException();
 		}
