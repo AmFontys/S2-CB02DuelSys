@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace  DuelSysClassLibrary
 {
@@ -11,52 +13,159 @@ namespace  DuelSysClassLibrary
         {
 			_dAL = dal;
         }
+
+        private bool ValidateInput(string input,string matchOn)
+        {
+			Regex regex = new Regex(matchOn);
+			return regex.IsMatch(input);
+        }
+
 		public bool AddAccount(string fname, string lname, string email, string team, DateTime birthdate, char gender, string address,string town, string password)
 		{
-			string encrytptPassword= Player.EncryptPassword(password, out string keyword);
-			Player player = new Player(fname, lname, email, team, birthdate, gender, address, town, encrytptPassword,keyword);
-			
-			return _dAL.AddAccount(player);
+			if (ValidateInput(fname, @"^[a-zA-Z]*$") & ValidateInput(lname, @"^[a-zA-Z]*$")
+				& ValidateInput(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$") & ValidateInput(team, @"^[a-zA-Z0-9_\-\s]*$")
+				& ValidateInput(Convert.ToString(gender), @"^[a-zA-Z]*$") & ValidateInput(address, @"^[a-zA-Z0-9_\-\s]*$")
+				& ValidateInput(town, @"^[a-zA-Z0-9_\-\s]*$"))
+			{
+				string encrytptPassword = Player.EncryptPassword(password, out string keyword);
+				Player player = new Player(0, fname, lname, email, team, birthdate, gender, address, town, encrytptPassword, keyword);
+
+				return _dAL.AddAccount(player);
+			}
+			else return false;
 		}
 
 		public bool AddAccount(string fname, string lname, string email, DateTime birthdate, char gender, string address, string town, string password, company company)
 		{
-			throw new NotImplementedException();
+			if (ValidateInput(fname, @"^[a-zA-Z]*$") & ValidateInput(lname, @"^[a-zA-Z]*$")
+				& ValidateInput(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$")
+				& ValidateInput(Convert.ToString(gender), @"^[a-zA-Z]*$") & ValidateInput(address, @"^[a-zA-Z0-9_\-\s]*$")
+				& ValidateInput(town, @"^[a-zA-Z0-9_\-\s]*$"))
+			{
+				string encrytptPassword = Player.EncryptPassword(password, out string keyword);
+				Player player = new Player(0, fname, lname, email,"", birthdate, gender, address, town, encrytptPassword, keyword);
+
+				return _dAL.AddAccount(player);
+			}
+			else return false;
 		}
 
 		public bool UpdateAccount(int id, string fname, string lname, string email, string team, DateTime birthdate, char gender, string address, string town, string password)
 		{
-			throw new NotImplementedException();
+			if (ValidateInput(fname, @"^[a-zA-Z]*$") & ValidateInput(lname, @"^[a-zA-Z]*$")
+				& ValidateInput(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$") & ValidateInput(team, @"^[a-zA-Z0-9_\-\s]*$")
+				& ValidateInput(Convert.ToString(gender), @"^[a-zA-Z]*$") & ValidateInput(address, @"^[a-zA-Z0-9_\-\s]*$")
+				& ValidateInput(town, @"^[a-zA-Z0-9_\-\s]*$"))
+			{
+				string keyword = "";
+				if(password !="" | password!=null)
+				password = Player.EncryptPassword(password, out keyword);
+				Player player = new Player(0, fname, lname, email, team, birthdate, gender, address, town, password, keyword);
+
+				return _dAL.AddAccount(player);
+			}
+			else return false;
+
 		}
 
 		public bool UpdateAccount(int id, string fname, string lname, string email, DateTime birthdate, char gender, string address, string town, string password, string employeeKey)
 		{
-			throw new NotImplementedException();
+			if (ValidateInput(fname, @"^[a-zA-Z]*$") & ValidateInput(lname, @"^[a-zA-Z]*$")
+				& ValidateInput(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$") 
+				& ValidateInput(Convert.ToString(gender), @"^[a-zA-Z]*$") & ValidateInput(address, @"^[a-zA-Z0-9_\-\s]*$")
+				& ValidateInput(town, @"^[a-zA-Z0-9_\-\s]*$"))
+			{
+				string keyword = "";
+				if (password != "" | password != null)
+					password = Staff.EncryptPassword(password, out  keyword);
+				Staff player = new Staff(fname, lname, email, birthdate, gender, address, town, password, keyword,employeeKey);
+
+				return _dAL.AddAccount(player);
+			}
+			else return false;
+
 		}
 
 		public bool UpdateAccount(int id, string fname, string lname, string email, DateTime birthdate, char gender, string address, string town, string password, string employeeKey, company company)
 		{
-			throw new NotImplementedException();
+			if (ValidateInput(fname, @"^[a-zA-Z]*$") & ValidateInput(lname, @"^[a-zA-Z]*$")
+				& ValidateInput(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$")
+				& ValidateInput(Convert.ToString(gender), @"^[a-zA-Z]*$") & ValidateInput(address, @"^[a-zA-Z0-9_\-\s]*$")
+				& ValidateInput(town, @"^[a-zA-Z0-9_\-\s]*$"))
+			{
+				string keyword = "";
+				if (password != "" | password != null)
+					password = Staff.EncryptPassword(password, out keyword);
+				Staff player = new Staff(fname, lname, email, birthdate, gender, address, town,password,"", employeeKey,company);
+
+				return _dAL.AddAccount(player);
+			}
+			else return false;
+
 		}
 
 		public List<Player> GetPlayers()
 		{
-			throw new NotImplementedException();
+			DataSet data = _dAL.GetAccounts();
+			List<Player> list = new List<Player>();
+			if (data.Tables.Count > 0)
+			{
+				if (data.Tables[0].Rows.Count > 0)
+				{
+					foreach (DataRow row in data.Tables[0].Rows)
+					{
+						list.Add(new Player(Convert.ToInt32(row[0]), Convert.ToString(row[1]), Convert.ToString(row[2]), Convert.ToString(row[3])
+							, Convert.ToString(row[9]), Convert.ToDateTime(row[4]), Convert.ToChar(row[5]), Convert.ToString(row[6]), Convert.ToString(row[7]), Convert.ToString(row[8]),""));
+					}
+				}
+			}
+			return list;
 		}
 
 		public List<Account> GetAccounts()
 		{
-			throw new NotImplementedException();
+			DataSet data = _dAL.GetAccounts();
+			List<Account> list = new List<Account>();
+			if (data.Tables.Count > 0)
+			{
+				if (data.Tables[0].Rows.Count > 0)
+				{
+					foreach (DataRow row in data.Tables[0].Rows)
+                    {
+						list.Add(new Account(Convert.ToInt32(row[0]),Convert.ToString( row[1]), Convert.ToString(row[2]), Convert.ToString(row[3])
+							, Convert.ToDateTime(row[4]), Convert.ToChar(row[5]), Convert.ToString(row[6]), Convert.ToString(row[7]), Convert.ToString(row[8]),""));
+                    }
+				}
+			}
+			return list;
 		}
 
 		public List<Staff> GetStaff()
 		{
-			throw new NotImplementedException();
+			DataSet data = _dAL.GetAccounts();
+			List<Staff> list = new List<Staff>();
+			if (data.Tables.Count > 0)
+			{
+				if (data.Tables[0].Rows.Count > 0)
+				{
+					foreach (DataRow row in data.Tables[0].Rows)
+					{
+						company comp = new(Convert.ToString(row[10]), Convert.ToString(11));
+						list.Add(new Staff(Convert.ToString(row[1]), Convert.ToString(row[2]), Convert.ToString(row[3])
+							, Convert.ToDateTime(row[4]), Convert.ToChar(row[5]), 
+							Convert.ToString(row[6]), Convert.ToString(row[7]), Convert.ToString(row[8]),
+							"" ,Convert.ToString(row[9]),comp));
+					}
+				}
+			}
+			return list;
 		}
 
 		public bool DeleteAccount(int id)
 		{
-			throw new NotImplementedException();
+			if (id > 0)
+				return _dAL.DeleteAccount(id);
+			else return false;
 		}
 
 		public bool tournamentSignup(int playerId, int tournamentId)
@@ -76,27 +185,52 @@ namespace  DuelSysClassLibrary
 
 		public bool Login(string email, string password)
 		{
-			throw new NotImplementedException();
+			if (ValidateInput(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
+			{
+				if(CheckValidEmail(email,out string keyword))
+                {
+					password = Account.EncryptPassword(password,keyword);
+					if (CheckValidPassword(email, password))
+                    {
+						return true;
+                    }
+                }
+				return false;
+			}
+			else return false;
 		}
 
 		public bool Login(string email, string password, string employeeKey)
 		{
-			throw new NotImplementedException();
+			if (ValidateInput(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
+			{
+				if (CheckValidEmail(email, out string keyword))
+				{
+					password = Account.EncryptPassword(password, keyword);
+					if (CheckValidPassword(email, password))
+					{
+						if (CheckEmployeeKey(email, password, employeeKey))
+							return true;
+					}
+				}
+				return false;
+			}
+			else return false;
 		}
 
 		private bool CheckValidEmail(string email, out string key)
 		{
-			throw new NotImplementedException();
+			return _dAL.CheckValidEmail(email,out key);
 		}
 
 		private bool CheckValidPassword(string email, string password)
 		{
-			throw new NotImplementedException();
+			return _dAL.CheckValidPassword(email, password);
 		}
 
 		private bool CheckEmployeeKey(string email, string password, string key)
 		{
-			throw new NotImplementedException();
+			return _dAL.CheckEmployeeKey(email, password, key);
 		}
 	}
 }

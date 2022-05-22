@@ -45,10 +45,14 @@ namespace DuelSysApp.AccountViews
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            bool succes = false;
             AccountManager manager = new AccountManager(new AccountDAL());
             if (txtTeam.Text == "" | txtTeam.Text == null)
-                manager.AddAccount(txtFName.Text, txtLname.Text, txtEmail.Text, dtpBirth.Value,Convert.ToChar( txtGender.Text), txtAddress.Text, txtTown.Text, txtPassword.Text, new company("none","none"));
-            else manager.AddAccount(txtFName.Text, txtLname.Text, txtEmail.Text, txtTeam.Text, dtpBirth.Value, Convert.ToChar(txtGender.Text), txtAddress.Text, txtTown.Text, txtPassword.Text);
+              succes=   manager.AddAccount(txtFName.Text, txtLname.Text, txtEmail.Text, dtpBirth.Value,Convert.ToChar( txtGender.Text), txtAddress.Text, txtTown.Text, txtPassword.Text, new company("none","none"));
+            else succes= manager.AddAccount(txtFName.Text, txtLname.Text, txtEmail.Text, txtTeam.Text, dtpBirth.Value, Convert.ToChar(txtGender.Text), txtAddress.Text, txtTown.Text, txtPassword.Text);
+
+            if (!succes) MessageBox.Show("You haven't filled the form in correctly");
+            else MessageBox.Show("Account Added");
         }
     }
 }

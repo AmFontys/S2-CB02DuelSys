@@ -47,6 +47,7 @@
                         <input asp-for="Team" type="text" name="team" id="team" class="form-control" placeholder="enter your team">
                     </div>
                     <input name="register" id="login" class="btn btn-block login-btn" type="submit" value="Register">                    
+                <br />@Html.Raw(@Model.responseMessage)
                 </form>
             </div>
 </div>
@@ -58,3 +59,4 @@
 
 </div>
 </div>
+<partial name="_ValidationScriptsPartial" />

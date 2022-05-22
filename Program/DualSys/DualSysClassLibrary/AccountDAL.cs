@@ -10,7 +10,8 @@ namespace  DuelSysClassLibrary
 	{
 		private bool CheckSingleResult(MySqlCommand command)
 		{
-			throw new NotImplementedException();
+			if( DBExecuter.ExecuteNoNQuery(command) >0)return true;
+            else return false;
 		}
 
 		private DataSet CheckMultipleResults(MySqlCommand command)
@@ -20,7 +21,22 @@ namespace  DuelSysClassLibrary
 
         public bool AddAccount(Player account)
         {
-            throw new NotImplementedException();
+            MySqlCommand command = new MySqlCommand();
+            command.CommandText = "INSERT INTO `ds_account`(`FirstName`, `LastName`, `Email`, `BirthDate`, `gender`, `address`, `town`, `password`, `keyword`) " +
+                "VALUES (@fName,@lName,@mail,@birth,@gender,@address,@town,@pass,@key);" +
+                "INSERT INTO `ds_player`(`AccountID`,`TeamName`) VALUES (LAST_INSERT_ID(),@team)";
+            command.Parameters.AddWithValue("@fName", account.getFname());
+            command.Parameters.AddWithValue("@lName",account.getLname());
+            command.Parameters.AddWithValue("@mail",account.getEmail());
+            command.Parameters.AddWithValue("@birth",account.getBirthDate());
+            command.Parameters.AddWithValue("@gender",account.getGender());
+            command.Parameters.AddWithValue("@address",account.getAddress());
+            command.Parameters.AddWithValue("@town",account.getTown());
+            command.Parameters.AddWithValue("@pass",account.getPassword());
+            command.Parameters.AddWithValue("@key", account.getKey());
+            command.Parameters.AddWithValue("@team", account.getTeam());
+
+            return CheckSingleResult(command);
         }
 
         public bool AddAccount(Staff staff)
@@ -75,12 +91,43 @@ namespace  DuelSysClassLibrary
 
         public bool CheckValidEmail(string email, out string key)
         {
-            throw new NotImplementedException();
+            MySqlCommand cmd = new MySqlCommand();
+
+            cmd.CommandText = "Select Keyword From ds_account where Email=@mail";
+            cmd.Parameters.Add(new MySqlParameter("@mail", email));
+            DataSet set = DBExecuter.ExecuteReader(cmd);
+            key = "";
+
+            if (set.Tables.Count <= 0) return false;
+            if (set.Tables[0].Rows.Count > 0)
+            {
+                key = set.Tables[0].Rows[0][0].ToString();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public bool CheckValidPassword(string email, string password)
         {
-            throw new NotImplementedException();
+            MySqlCommand cmd = new MySqlCommand();
+
+            cmd.CommandText = "Select AccountID From ds_account where Email=@mail and Password=@pass";
+            cmd.Parameters.Add(new MySqlParameter("@mail", email));
+            cmd.Parameters.Add(new MySqlParameter("@pass", password));
+            //Checks if there is any rows that can be returned with the command
+            DataSet set = DBExecuter.ExecuteReader(cmd);
+            if (set.Tables.Count > 0)
+            {
+                if (set.Tables[0].Rows.Count > 0)
+                {                    
+                    return true;
+                }
+                else return false;
+            }
+            else return false;
         }
 
         public bool CheckEmployeeKey(string email, string password, string key)

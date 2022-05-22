@@ -39,7 +39,7 @@ namespace DuelSysApp.AccountViews
             txtLname.Text = account.getLname();
             txtEmail.Text = account.getEmail();
             txtPassword.Text = "";
-            txtAddress.Text = account.geAddress();
+            txtAddress.Text = account.getAddress();
             txtGender.Text = account.getGender();
             txtTown.Text = account.getTown();
             if (1 > 0)
