@@ -33,7 +33,8 @@ namespace DuelSysApp.AccountViews
 
         internal void LoadData(object data)
         {
-            
+            ReloadCompanys();
+            txtTeam.Text = "";
             txtTeam.Visible = true;
             cmbCompany.Visible = true;
             if (data is Player)
@@ -61,15 +62,28 @@ namespace DuelSysApp.AccountViews
             
         }
 
+        private void ReloadCompanys()
+        {
+            CompanyManager manager = new CompanyManager(new CompanyDAL());
+
+            foreach (var l in manager.GetCompanys())
+            {
+                cmbCompany.Items.Add((company)l);
+            }
+        }
+
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             AccountManager manager = new AccountManager(new AccountDAL());
             if (txtTeam.Text != "")
                 manager.UpdateAccount(id, txtFName.Text, txtLname.Text, txtEmail.Text, txtTeam.Text, dtpBirth.Value, Convert.ToChar(txtGender.Text), txtAddress.Text, txtTown.Text, txtPassword.Text);
-            else manager.UpdateAccount(id, txtFName.Text, txtLname.Text, txtEmail.Text, dtpBirth.Value, Convert.ToChar(txtGender.Text), txtAddress.Text, txtTown.Text, txtPassword.Text, "", (company)cmbCompany.SelectedItem);
 
+            else {
+                company comp = (company)cmbCompany.SelectedItem;
+                manager.UpdateAccount(id, txtFName.Text, txtLname.Text, txtEmail.Text, dtpBirth.Value, Convert.ToChar(txtGender.Text), txtAddress.Text, txtTown.Text, txtPassword.Text,comp );
+            }
 
-                    }
+        }
 
     }
 }

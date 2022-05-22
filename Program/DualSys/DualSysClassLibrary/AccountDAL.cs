@@ -54,7 +54,25 @@ namespace  DuelSysClassLibrary
 
         public bool AddAccount(Staff staff)
         {
-            throw new NotImplementedException();
+            MySqlCommand command = new MySqlCommand();
+            command.CommandText = "select AccountID from `ds_account` where `Email`=@mail";
+            command.Parameters.AddWithValue("@mail", staff.getEmail());
+            if (CheckSingleResult(command)) return false;
+
+            command.CommandText = "INSERT INTO `ds_account`(`FirstName`, `LastName`, `Email`, `BirthDate`, `gender`, `address`, `town`, `password`, `keyword`) " +
+                "VALUES (@fName,@lName,@mail,@birth,@gender,@address,@town,@pass,@key);" +
+                "INSERT INTO `ds_staff`(`AccountID`,`CompanyID`) VALUES (LAST_INSERT_ID(),@company)";
+            command.Parameters.AddWithValue("@fName", staff.getFname());
+            command.Parameters.AddWithValue("@lName", staff.getLname());
+            command.Parameters.AddWithValue("@birth", staff.getBirthDate());
+            command.Parameters.AddWithValue("@gender", staff.getGender());
+            command.Parameters.AddWithValue("@address", staff.getAddress());
+            command.Parameters.AddWithValue("@town", staff.getTown());
+            command.Parameters.AddWithValue("@pass", staff.getPassword());
+            command.Parameters.AddWithValue("@key", staff.getKey());
+            command.Parameters.AddWithValue("@company", staff.getCompany().getId());
+
+            return CheckSingleResult(command);
         }
 
         public bool Updateplayer(Player player)
@@ -90,7 +108,33 @@ namespace  DuelSysClassLibrary
 
         public bool UpdateAccount(Staff staff)
         {
-            throw new NotImplementedException();
+            MySqlCommand command = new MySqlCommand();
+            command.CommandText = "select AccountID from `ds_account` where `Email`=@mail";
+            command.Parameters.AddWithValue("@mail", staff.getEmail());
+            if (CheckSingleResult(command)) return false;
+
+            command.CommandText = "UPDATE `ds_account` SET `FirstName`=@fName,`LastName`=@lName," +
+                "`Email`=@mail,`BirthDate`=@birth,`gender`=@gender,`address`=@address," +
+                "`town`=@town ";
+            if (staff.getPassword().Length > 0)
+            {
+                command.CommandText += ",`password`= @pass,`keyword`=@key ";
+            }
+            command.CommandText += "WHERE AccountID=@id; ";
+            command.CommandText += "UPDATE `ds_staff` SET `CompanyID`=@company WHERE AccountID=@id; ";
+            command.CommandText += "INSERT IGNORE INTO  `ds_staff` (`CompanyID`,`AccountID`) values(@company,@id)";
+            command.Parameters.AddWithValue("@id", staff.getID());
+            command.Parameters.AddWithValue("@fName", staff.getFname());
+            command.Parameters.AddWithValue("@lName", staff.getLname());
+            command.Parameters.AddWithValue("@birth", staff.getBirthDate());
+            command.Parameters.AddWithValue("@gender", staff.getGender());
+            command.Parameters.AddWithValue("@address", staff.getAddress());
+            command.Parameters.AddWithValue("@town", staff.getTown());
+            command.Parameters.AddWithValue("@pass", staff.getPassword());
+            command.Parameters.AddWithValue("@key", staff.getKey());
+            command.Parameters.AddWithValue("@company", staff.getCompany().getId());
+
+            return CheckSingleResult(command);
         }
 
         public DataSet GetPlayers()
@@ -111,7 +155,7 @@ namespace  DuelSysClassLibrary
         public DataSet GetStaff()
         {
             MySqlCommand command = new MySqlCommand();
-            command.CommandText = "SELECT `a`.*, `s`.`staffKey`, `c`.`CompanyName`, `c`.`CompanyLocation`" +
+            command.CommandText = "SELECT `a`.*, `c`.`CompanyName`,`c`.`CompanyID`, `c`.`CompanyLocation`" +
                 "FROM `ds_account` AS `a` RIGHT JOIN `ds_staff` AS `s` ON `s`.`AccountID` = `a`.`AccountID` " +
                 "LEFT JOIN `ds_company` AS `c` ON `s`.`CompanyID` = `c`.`CompanyID`;";
             return CheckMultipleResults(command);
@@ -119,7 +163,12 @@ namespace  DuelSysClassLibrary
 
         public bool DeleteAccount(int id)
         {
-            throw new NotImplementedException();
+            MySqlCommand command = new MySqlCommand();
+            command.CommandText = "DELETE  From `ds_staff` where AccountID=@id;" +
+                "DELETE FROM `ds_player` where AccountID=@id;" +
+                "DELETE FROM `ds_account` where AccountID=@id";
+            command.Parameters.AddWithValue("@id", id);
+                return CheckSingleResult(command);
         }
 
         public bool tournamentSignup(int playerId, int tournamentId)
@@ -132,7 +181,7 @@ namespace  DuelSysClassLibrary
             throw new NotImplementedException();
         }
 
-        public DataSet GetAccount(string email, string employeeKey)
+        public DataSet GetAccount(string email, company company)
         {
             throw new NotImplementedException();
         }
@@ -178,14 +227,13 @@ namespace  DuelSysClassLibrary
             else return false;
         }
 
-        public bool CheckEmployeeKey(string email, string password, string key)
+        public bool CheckEmployeeKey(string email, string password)
         {
             MySqlCommand cmd = new MySqlCommand();
 
-            cmd.CommandText = "Select a.AccountID From ds_account  as aRIGHT JOIN ds_staff as s on a.AccountID=s.AccountID where Email=@mail and Password=@pass and EmployeeKey=@key";
+            cmd.CommandText = "Select a.AccountID From ds_account  as a RIGHT JOIN ds_staff as s on a.AccountID=s.AccountID where Email=@mail and Password=@pass";
             cmd.Parameters.Add(new MySqlParameter("@mail", email));
             cmd.Parameters.Add(new MySqlParameter("@pass", password));
-            cmd.Parameters.Add(new MySqlParameter("@key", key));
             //Checks if there is any rows that can be returned with the command
             DataSet set = DBExecuter.ExecuteReader(cmd);
             if (set.Tables.Count > 0)

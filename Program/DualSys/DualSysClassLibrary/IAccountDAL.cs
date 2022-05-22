@@ -27,12 +27,12 @@ namespace  DuelSysClassLibrary
 
 		DataSet GetAccount(string email);
 
-		DataSet GetAccount(string email, string employeeKey);
+		DataSet GetAccount(string email, company company);
 
 		bool CheckValidEmail(string email, out string key);
 
 		bool CheckValidPassword(string email, string password);
 
-		bool CheckEmployeeKey(string email, string password, string key);
+		bool CheckEmployeeKey(string email, string password);
 	}
 }

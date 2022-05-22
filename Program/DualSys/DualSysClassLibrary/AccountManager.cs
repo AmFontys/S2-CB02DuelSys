@@ -67,26 +67,8 @@ namespace  DuelSysClassLibrary
 			else return false;
 
 		}
-
-		public bool UpdateAccount(int id, string fname, string lname, string email, DateTime birthdate, char gender, string address, string town, string password, string employeeKey)
-		{
-			if (ValidateInput(fname, @"^[a-zA-Z]*$") & ValidateInput(lname, @"^[a-zA-Z]*$")
-				& ValidateInput(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$") 
-				& ValidateInput(Convert.ToString(gender), @"^[a-zA-Z]*$") & ValidateInput(address, @"^[a-zA-Z0-9_\-\s]*$")
-				& ValidateInput(town, @"^[a-zA-Z0-9_\-\s]*$"))
-			{
-				string keyword = "";
-				if (password != "" | password != null)
-					password = Staff.EncryptPassword(password, out  keyword);
-				Staff player = new Staff(fname, lname, email, birthdate, gender, address, town, password, keyword,employeeKey);
-
-				return _dAL.AddAccount(player);
-			}
-			else return false;
-
-		}
-
-		public bool UpdateAccount(int id, string fname, string lname, string email, DateTime birthdate, char gender, string address, string town, string password, string employeeKey, company company)
+		
+		public bool UpdateAccount(int id, string fname, string lname, string email, DateTime birthdate, char gender, string address, string town, string password, company company)
 		{
 			if (ValidateInput(fname, @"^[a-zA-Z]*$") & ValidateInput(lname, @"^[a-zA-Z]*$")
 				& ValidateInput(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$")
@@ -94,11 +76,11 @@ namespace  DuelSysClassLibrary
 				& ValidateInput(town, @"^[a-zA-Z0-9_\-\s]*$"))
 			{
 				string keyword = "";
-				if (password != "" | password != null)
+				if (password != "" & password != null)
 					password = Staff.EncryptPassword(password, out keyword);
-				Staff player = new Staff(fname, lname, email, birthdate, gender, address, town,password,"", employeeKey,company);
+				Staff player = new Staff(id,fname, lname, email, birthdate, gender, address, town,password,keyword, company);
 
-				return _dAL.AddAccount(player);
+				return _dAL.UpdateAccount(player);
 			}
 			else return false;
 
@@ -150,11 +132,11 @@ namespace  DuelSysClassLibrary
 				{
 					foreach (DataRow row in data.Tables[0].Rows)
 					{
-						company comp = new(Convert.ToString(row[10]), Convert.ToString(11));
-						list.Add(new Staff(Convert.ToString(row[1]), Convert.ToString(row[2]), Convert.ToString(row[3])
+						company comp = new(Convert.ToInt32(row[11]), Convert.ToString(row[10]), Convert.ToString(12));
+						list.Add(new Staff(Convert.ToInt32(row[0]), Convert.ToString(row[1]), Convert.ToString(row[2]), Convert.ToString(row[3])
 							, Convert.ToDateTime(row[4]), Convert.ToChar(row[5]), 
 							Convert.ToString(row[6]), Convert.ToString(row[7]), Convert.ToString(row[8]),
-							"" ,Convert.ToString(row[9]),comp));
+							"" ,comp));
 					}
 				}
 			}
@@ -209,7 +191,7 @@ namespace  DuelSysClassLibrary
 					password = Account.EncryptPassword(password, keyword);
 					if (CheckValidPassword(email, password))
 					{
-						if (CheckEmployeeKey(email, password, employeeKey))
+						if (CheckEmployeeKey(email, password))
 							return true;
 					}
 				}
@@ -228,9 +210,9 @@ namespace  DuelSysClassLibrary
 			return _dAL.CheckValidPassword(email, password);
 		}
 
-		private bool CheckEmployeeKey(string email, string password, string key)
+		private bool CheckEmployeeKey(string email, string password)
 		{
-			return _dAL.CheckEmployeeKey(email, password, key);
+			return _dAL.CheckEmployeeKey(email, password);
 		}
 	}
 }

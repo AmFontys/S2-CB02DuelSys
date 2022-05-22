@@ -16,7 +16,7 @@ namespace DualSysApp
         {
             string email = txtEmail.Text;
             string pass = txtPass.Text;
-            bool loginsuccesfull = management.Login(email, pass,employeeKey);
+            bool loginsuccesfull = management.Login(email, pass,"");
 
             if (loginsuccesfull)
             {
