@@ -26,8 +26,13 @@ namespace DuelSysClassLibrary
 
         public bool CheckValidEmail(string email, out string key)
         {
-            key = null;
-            return true;
+            key = "";
+            if (email == "test@mail.com")
+            {
+                key = "E0qXR479SuoTJf392GayJw==";
+                return true;
+            }
+            else return false;
         }
 
         public bool CheckValidPassword(string email, string password)

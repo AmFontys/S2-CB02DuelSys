@@ -12,6 +12,7 @@ namespace DuelSysClassLibrary.Tests
     public class AccountManagerTests
     {
         private static AccountManager _accountManager = new(new AccountDalMock());
+        private static CompanyManager _companyManager = new(new CompanyDalMock());
 
         [TestMethod()]
         public void AddAccountTestPlayerFail()
@@ -114,24 +115,31 @@ namespace DuelSysClassLibrary.Tests
         [TestMethod()]
         public void LoginTestEmpFail()
         {
-            Assert.Fail();
+            bool succes = _accountManager.Login("test@mail", "123", "");
+            Assert.IsFalse(succes);
         }
 
         [TestMethod()]
         public void LoginTestEmpSucces()
         {
-            Assert.Fail();
+            bool succes = _accountManager.Login("test@mail.com", "123", "");
+            Assert.IsTrue(succes);
+        }
+
+        [TestMethod()]
+        public void LoginTestWrongEmail()
+        {
+            bool succes = _accountManager.Login("testing@mail.com", "123", "");
+            Assert.IsFalse(succes);
         }
 
         [TestMethod()]
         public void GetCompanysFail()
         {
-            Assert.Fail();
+            List<company> expected = new List<company>();
+            List<company> actual = _companyManager.GetCompanys();
+            Assert.AreEqual(expected.Count,actual.Count);
         }
-        [TestMethod()]
-        public void GetCompanysSucces()
-        {
-            Assert.Fail();
-        }
+        
     }
 }
