@@ -17,57 +17,81 @@ namespace DuelSysClassLibrary.Tests
         [TestMethod()]
         public void AddAccountTestPlayerFail()
         {
-            Assert.Fail();
+            bool succes = _accountManager.AddAccount("acc0unt", "Last", "ename@mail", "Stp-Team", DateTime.UtcNow, 'F', "NoStreet", "Tribe", "N2rt");
+            Assert.IsFalse(succes);
         }
         [TestMethod()]
         public void AddAccountTestPlayerSucces()
         {
-            Assert.Fail();
+            bool succes = _accountManager.AddAccount("account", "Last", "ename@mail.com","Stp-Team", DateTime.UtcNow, 'F', "NoStreet", "Tribe", "N2rt");
+            Assert.IsTrue(succes);
         }
 
         [TestMethod()]
         public void AddAccountTestEmpFail()
         {
-            Assert.Fail();
+            bool succes = _accountManager.AddAccount("Nam3", "Last", "ename@mail.com", DateTime.UtcNow, 'F', "NoStreet", "Tribe", "N2rt", new company("CompanyTeam", "NoWhere"));
+            Assert.IsFalse(succes);
         }
         [TestMethod()]
         public void AddAccountTestEmpSucces()
         {
-            Assert.Fail();
+            bool succes = _accountManager.AddAccount("Name", "Last", "ename@mail.com", DateTime.UtcNow, 'F', "NoStreet", "Tribe","N2rt", new company("CompanyTeam", "NoWhere"));
+            Assert.IsTrue(succes);
         }
 
         [TestMethod()]
-        public void UpdateAccountPlayerFail()
+        public void UpdateAccountPlayerFailTown()
         {
-            Assert.Fail();
+            bool succes = _accountManager.UpdateAccount(1, "Samanta", "Ring", "emp@mail.com", "Team", DateTime.UtcNow, 'M', "Bristol", "L#ndon", "SmthRng");
+            Assert.IsFalse(succes);
+        }
+        [TestMethod()]
+        public void UpdateAccountPlayerFailName()
+        {
+            bool succes = _accountManager.UpdateAccount(1, "Samanta", "R1ng", "emp@mail.com", "Team", DateTime.UtcNow, 'M', "Bristol", "London", "SmthRng");
+            Assert.IsFalse(succes);
         }
         [TestMethod()]
         public void UpdateAccountPlayerSucces()
         {
-            Assert.Fail();
+            bool succes = _accountManager.UpdateAccount(1, "Samanta", "Ring", "emp@mail.com","Team", DateTime.UtcNow, 'M', "Bristol", "London", "SmthRng");
+            Assert.IsTrue(succes);
         }
 
         [TestMethod()]
-        public void UpdateAccountEmpFail()
+        public void UpdateAccountEmpFailName()
         {
-            Assert.Fail();
+            bool succes = _accountManager.UpdateAccount(1, "Fr3dy", "Curry", "emp@mail.com", DateTime.UtcNow, 'M', "Bristol", "London", "Fr33dy", new company("Name", "Location"));
+            Assert.IsFalse(succes);
+        }
+        [TestMethod()]
+        public void UpdateAccountEmpFailMail()
+        {
+            bool succes = _accountManager.UpdateAccount(1, "Fredy", "Curry", "emp@mail", DateTime.UtcNow, 'M', "Bristol", "London", "Fr33dy", new company("Name", "Location"));
+            Assert.IsFalse(succes);
         }
         [TestMethod()]
         public void UpdateAccountEmpSucces()
         {
-            Assert.Fail();
+            bool succes = _accountManager.UpdateAccount(1,"Fredy","Curry","emp@mail.com",DateTime.UtcNow,'M',"Bristol","London","Fr33dy",new company("Name","Location"));
+            Assert.IsTrue(succes);
         }
 
         [TestMethod()]
         public void GetPlayersSucces()
         {
-            Assert.Fail();
+            List<Player> expected = new List<Player>();
+            List<Player> staffs = _accountManager.GetPlayers();
+            Assert.AreEqual(expected.Count, staffs.Count);
         }
 
         [TestMethod()]
         public void GetAccountsSucces()
         {
-            Assert.Fail();
+            List<Account> expected = new List<Account>();
+            List<Account> actual = _accountManager.GetAccounts();
+            Assert.AreEqual(expected.Count, actual.Count);
         }
 
         [TestMethod()]
@@ -93,12 +117,14 @@ namespace DuelSysClassLibrary.Tests
         [TestMethod()]
         public void tournamentSignupFail()
         {
+            //needs to be implented
             Assert.Fail();
         }
 
         [TestMethod()]
         public void tournamentSignupSucces()
         {
+            //needs to be implented
             Assert.Fail();
         }
 
