@@ -131,13 +131,13 @@
             this.rbEmployees.Name = "rbEmployees";
             this.rbEmployees.Size = new System.Drawing.Size(102, 24);
             this.rbEmployees.TabIndex = 30;
-            this.rbEmployees.TabStop = true;
             this.rbEmployees.Text = "Employees";
             this.rbEmployees.UseVisualStyleBackColor = true;
             // 
             // rbPlayer
             // 
             this.rbPlayer.AutoSize = true;
+            this.rbPlayer.Checked = true;
             this.rbPlayer.Location = new System.Drawing.Point(302, 99);
             this.rbPlayer.Name = "rbPlayer";
             this.rbPlayer.Size = new System.Drawing.Size(76, 24);
@@ -153,7 +153,6 @@
             this.rbAll.Name = "rbAll";
             this.rbAll.Size = new System.Drawing.Size(48, 24);
             this.rbAll.TabIndex = 28;
-            this.rbAll.TabStop = true;
             this.rbAll.Text = "All";
             this.rbAll.UseVisualStyleBackColor = true;
             // 

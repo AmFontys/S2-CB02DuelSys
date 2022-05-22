@@ -58,11 +58,11 @@ namespace  DuelSysClassLibrary
 				& ValidateInput(town, @"^[a-zA-Z0-9_\-\s]*$"))
 			{
 				string keyword = "";
-				if(password !="" | password!=null)
+				if(password !="" & password!=null)
 				password = Player.EncryptPassword(password, out keyword);
-				Player player = new Player(0, fname, lname, email, team, birthdate, gender, address, town, password, keyword);
+				Player player = new Player(id, fname, lname, email, team, birthdate, gender, address, town, password, keyword);
 
-				return _dAL.AddAccount(player);
+				return _dAL.UpdateAccount(player);
 			}
 			else return false;
 
@@ -106,7 +106,7 @@ namespace  DuelSysClassLibrary
 
 		public List<Player> GetPlayers()
 		{
-			DataSet data = _dAL.GetAccounts();
+			DataSet data = _dAL.GetPlayers();
 			List<Player> list = new List<Player>();
 			if (data.Tables.Count > 0)
 			{
@@ -115,7 +115,7 @@ namespace  DuelSysClassLibrary
 					foreach (DataRow row in data.Tables[0].Rows)
 					{
 						list.Add(new Player(Convert.ToInt32(row[0]), Convert.ToString(row[1]), Convert.ToString(row[2]), Convert.ToString(row[3])
-							, Convert.ToString(row[9]), Convert.ToDateTime(row[4]), Convert.ToChar(row[5]), Convert.ToString(row[6]), Convert.ToString(row[7]), Convert.ToString(row[8]),""));
+							, Convert.ToString(row[10]), Convert.ToDateTime(row[4]), Convert.ToChar(row[5]), Convert.ToString(row[6]), Convert.ToString(row[7]), Convert.ToString(row[8]),""));
 					}
 				}
 			}
@@ -142,7 +142,7 @@ namespace  DuelSysClassLibrary
 
 		public List<Staff> GetStaff()
 		{
-			DataSet data = _dAL.GetAccounts();
+			DataSet data = _dAL.GetStaff();
 			List<Staff> list = new List<Staff>();
 			if (data.Tables.Count > 0)
 			{

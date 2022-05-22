@@ -129,7 +129,10 @@ namespace  DuelSysClassLibrary
 			return hashed;
 		}
 
-       
+        public override string ToString()
+        {
+            return $"{getFname()} {getLname()}({getGender()}), {getEmail()}";
+        }
 
-	}
+    }
 }

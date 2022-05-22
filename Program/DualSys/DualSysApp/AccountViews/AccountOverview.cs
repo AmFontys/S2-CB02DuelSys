@@ -52,9 +52,9 @@ namespace DuelSysApp.AccountViews
                 btnUpdate.Visible = true;
                 btnDelete.Visible = true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Console.WriteLine(ex.ToString());
             }
         }
 
@@ -118,7 +118,19 @@ namespace DuelSysApp.AccountViews
             lbView.Items.Clear();
             foreach (var l in list)
             {
-                lbView.Items.Add(l);
+                if (rbAll.Checked)
+                {
+                    lbView.Items.Add((Account)l);
+                }
+                else if (rbPlayer.Checked)
+                {
+                    lbView.Items.Add((Player)l);
+                }
+                else if (rbEmployees.Checked)
+                {
+                    lbView.Items.Add((Staff)l);
+                }
+                
             }
         }
     }

@@ -13,6 +13,7 @@ namespace DuelSysApp.AccountViews
 {
     public partial class AccountUpdate : UserControl
     {
+        private int id;
         private static AccountUpdate _instance;
         public static AccountUpdate Instance
         {
@@ -32,9 +33,24 @@ namespace DuelSysApp.AccountViews
 
         internal void LoadData(object data)
         {
-            txtTeam.Visible = false;
-            cmbCompany.Visible = false;
+            
+            txtTeam.Visible = true;
+            cmbCompany.Visible = true;
+            if (data is Player)
+            {
+                cmbCompany.Visible = false;
+                txtTeam.Visible = true;
+                Player player = data as Player;
+                txtTeam.Text = player.getTeam();
+            }
+            else if(data is Staff)
+            {
+                txtTeam.Visible = false;
+                cmbCompany.Items.Add(new company("none", "none"));
+                cmbCompany.Visible = true;
+            }
             Account account = data as Account;
+            id = account.getID();
             txtFName.Text =  account.getFname();
             txtLname.Text = account.getLname();
             txtEmail.Text = account.getEmail();
@@ -42,22 +58,18 @@ namespace DuelSysApp.AccountViews
             txtAddress.Text = account.getAddress();
             txtGender.Text = account.getGender();
             txtTown.Text = account.getTown();
-            if (1 > 0)
-            {
-                txtTeam.Visible = true;
-                Player player = data as Player;
-                txtTeam.Text = player.getTeam();
-            }
-            else
-            {
-                cmbCompany.Items.Add(new company("none", "none"));
-                cmbCompany.Visible = true;
-            }
+            
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            AccountManager manager = new AccountManager(new AccountDAL());
+            if (txtTeam.Text != "")
+                manager.UpdateAccount(id, txtFName.Text, txtLname.Text, txtEmail.Text, txtTeam.Text, dtpBirth.Value, Convert.ToChar(txtGender.Text), txtAddress.Text, txtTown.Text, txtPassword.Text);
+            else manager.UpdateAccount(id, txtFName.Text, txtLname.Text, txtEmail.Text, dtpBirth.Value, Convert.ToChar(txtGender.Text), txtAddress.Text, txtTown.Text, txtPassword.Text, "", (company)cmbCompany.SelectedItem);
 
-        }
+
+                    }
+
     }
 }
