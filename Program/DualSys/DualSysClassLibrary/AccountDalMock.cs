@@ -32,6 +32,11 @@ namespace DuelSysClassLibrary
                 key = "E0qXR479SuoTJf392GayJw==";
                 return true;
             }
+            else if(email== "player@mail.com")
+            {
+                key = "SuoTJf39E0qXR4792GayJw==";
+                return true;
+            }
             else return false;
         }
 
@@ -57,6 +62,22 @@ namespace DuelSysClassLibrary
 
         public DataSet GetAccounts()
         {
+            //DataSet set = new DataSet();
+            //DataTable table = set.Tables.Add("Table1");
+            //DataColumn column =
+            //     table.Columns.Add("CompanyID", typeof(Int32));
+            //     table.Columns.Add("CompanyName", typeof(string));
+            //table.Columns.Add("CompanyLocation", typeof(string));
+            //DataRow row = table.NewRow();
+            //row[0] = 1;
+            //row[1] = "company";
+            //row[2] = "loc";
+
+            //table.Rows.Add(row);
+
+            //set.Tables.Add(table);
+
+            //return set;
             return new DataSet();
         }
 

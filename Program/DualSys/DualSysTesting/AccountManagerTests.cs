@@ -73,19 +73,21 @@ namespace DuelSysClassLibrary.Tests
         [TestMethod()]
         public void GetStaffSucces()
         {
-            Assert.Fail();
+            List<Staff> expected = new List<Staff>();
+            List<Staff> staffs = _accountManager.GetStaff();
+            Assert.AreEqual(expected.Count,staffs.Count);
         }
 
         [TestMethod()]
         public void DeleteAccountFail()
         {
-            Assert.Fail();
+            Assert.IsFalse(_accountManager.DeleteAccount(-1));
         }
 
         [TestMethod()]
         public void DeleteAccountSucces()
         {
-            Assert.Fail();
+            Assert.IsTrue(_accountManager.DeleteAccount(1));
         }
 
         [TestMethod()]
@@ -103,13 +105,15 @@ namespace DuelSysClassLibrary.Tests
         [TestMethod()]
         public void LoginTestPlayerFail()
         {
-            Assert.Fail();
+            bool succes = _accountManager.Login("player@mail", "123", "");
+            Assert.IsFalse(succes);
         }
 
         [TestMethod()]
         public void LoginTestPlayerSucces()
         {
-            Assert.Fail();
+            bool succes = _accountManager.Login("player@mail.com", "123", "");
+            Assert.IsTrue(succes);
         }
 
         [TestMethod()]
