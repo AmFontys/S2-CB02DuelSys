@@ -155,7 +155,7 @@ namespace  DuelSysClassLibrary
         public DataSet GetStaff()
         {
             MySqlCommand command = new MySqlCommand();
-            command.CommandText = "SELECT `a`.*, `c`.`CompanyName`,`c`.`CompanyID`, `c`.`CompanyLocation`" +
+            command.CommandText = "SELECT `a`.*, `c`.`CompanyID`, `c`.`CompanyName`,`c`.`CompanyLocation`" +
                 "FROM `ds_account` AS `a` RIGHT JOIN `ds_staff` AS `s` ON `s`.`AccountID` = `a`.`AccountID` " +
                 "LEFT JOIN `ds_company` AS `c` ON `s`.`CompanyID` = `c`.`CompanyID`;";
             return CheckMultipleResults(command);

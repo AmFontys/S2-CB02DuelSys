@@ -81,25 +81,22 @@ namespace DuelSysClassLibrary.Tests
         [TestMethod()]
         public void GetPlayersSucces()
         {
-            List<Player> expected = new List<Player>();
             List<Player> staffs = _accountManager.GetPlayers();
-            Assert.AreEqual(expected.Count, staffs.Count);
+            Assert.AreEqual(1, staffs.Count);
         }
 
         [TestMethod()]
         public void GetAccountsSucces()
         {
-            List<Account> expected = new List<Account>();
             List<Account> actual = _accountManager.GetAccounts();
-            Assert.AreEqual(expected.Count, actual.Count);
+            Assert.AreEqual(1, actual.Count);
         }
 
         [TestMethod()]
         public void GetStaffSucces()
         {
-            List<Staff> expected = new List<Staff>();
             List<Staff> staffs = _accountManager.GetStaff();
-            Assert.AreEqual(expected.Count,staffs.Count);
+            Assert.AreEqual(1,staffs.Count);
         }
 
         [TestMethod()]
@@ -164,11 +161,10 @@ namespace DuelSysClassLibrary.Tests
         }
 
         [TestMethod()]
-        public void GetCompanysFail()
+        public void GetCompanysSucces()
         {
-            List<company> expected = new List<company>();
             List<company> actual = _companyManager.GetCompanys();
-            Assert.AreEqual(expected.Count,actual.Count);
+            Assert.AreEqual(1,actual.Count);
         }
         
     }

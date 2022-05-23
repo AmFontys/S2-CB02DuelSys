@@ -62,33 +62,113 @@ namespace DuelSysClassLibrary
 
         public DataSet GetAccounts()
         {
-            //DataSet set = new DataSet();
-            //DataTable table = set.Tables.Add("Table1");
-            //DataColumn column =
-            //     table.Columns.Add("CompanyID", typeof(Int32));
-            //     table.Columns.Add("CompanyName", typeof(string));
-            //table.Columns.Add("CompanyLocation", typeof(string));
-            //DataRow row = table.NewRow();
-            //row[0] = 1;
-            //row[1] = "company";
-            //row[2] = "loc";
+            DataSet set = new DataSet();
+            DataTable table = new DataTable();
+            DataColumn column =
+                 table.Columns.Add("AccountID", typeof(Int32));
+            table.Columns.Add("Fname", typeof(string));
+            table.Columns.Add("Lname", typeof(string));
+            table.Columns.Add("email", typeof(string));
+            table.Columns.Add("BirthDate", typeof(DateTime));
+            table.Columns.Add("gender", typeof(char));
+            table.Columns.Add("address", typeof(string));
+            table.Columns.Add("town", typeof(string));
+            table.Columns.Add("password", typeof(string));
+            table.Columns.Add("keyword", typeof(string));
+            DataRow row = table.NewRow();
+            row[0] = 1;
+            row[1] = "Benny";
+            row[2] = "Bob";
+            row[3] = "benny@gmail.com";
+            row[4] = DateTime.UtcNow;
+            row[5] = 'O';
+            row[6] = "streetAdress 1";
+            row[7] = "London";
+            row[8] = "secretPassword";
+            row[9] = "SuoTJf39E0qXR4792GayJw==";
 
-            //table.Rows.Add(row);
+            table.Rows.Add(row);
 
-            //set.Tables.Add(table);
+            set.Tables.Add(table);
 
-            //return set;
-            return new DataSet();
+            return set;
         }
 
         public DataSet GetPlayers()
         {
-            return new DataSet();
+            DataSet set = new DataSet();
+            DataTable table = new DataTable();
+            DataColumn column =
+                 table.Columns.Add("AccountID", typeof(Int32));
+            table.Columns.Add("Fname", typeof(string));
+            table.Columns.Add("Lname", typeof(string));
+            table.Columns.Add("email", typeof(string));
+            table.Columns.Add("BirthDate", typeof(DateTime));
+            table.Columns.Add("gender", typeof(char));
+            table.Columns.Add("address", typeof(string));
+            table.Columns.Add("town", typeof(string));
+            table.Columns.Add("password", typeof(string));
+            table.Columns.Add("keyword", typeof(string));
+            table.Columns.Add("teamName", typeof(string));
+            DataRow row = table.NewRow();
+            row[0] = 2;
+            row[1] = "Jenny";
+            row[2] = "Lizard";
+            row[3] = "jenny@gmail.com";
+            row[4] = DateTime.UtcNow;
+            row[5] = 'F';
+            row[6] = "streetAdress 1";
+            row[7] = "London";
+            row[8] = "secretPassword";
+            row[9] = "SuoTJf39E0qXR4792GayJw==";
+            row[10] = "helpfullteam";
+
+            table.Rows.Add(row);
+
+            set.Tables.Add(table);
+
+            return set;
         }
 
         public DataSet GetStaff()
         {
-            return new DataSet();
+            DataSet set = new DataSet();
+            DataTable table = new DataTable();
+            DataColumn column =
+                 table.Columns.Add("AccountID", typeof(Int32));
+                 table.Columns.Add("Fname", typeof(string));
+                 table.Columns.Add("Lname", typeof(string));
+                 table.Columns.Add("email", typeof(string));
+                 table.Columns.Add("BirthDate", typeof(DateTime));
+                 table.Columns.Add("gender", typeof(char));
+                 table.Columns.Add("address", typeof(string));
+                 table.Columns.Add("town", typeof(string));
+                 table.Columns.Add("password", typeof(string));
+                 table.Columns.Add("keyword", typeof(string));
+            table.Columns.Add("CompanyID", typeof(Int32));
+            table.Columns.Add("CompanyName", typeof(string));
+            table.Columns.Add("CompanyLocation", typeof(string));
+            DataRow row = table.NewRow();
+            row[0] = 1;
+            row[1] = "Benny";
+            row[2] = "Bob";
+            row[3] = "benny@gmail.com";
+            row[4] = DateTime.UtcNow;
+            row[5] = 'O';
+            row[6] = "streetAdress 1";
+            row[7] = "London";
+            row[8] = "secretPassword";
+            row[9] = "SuoTJf39E0qXR4792GayJw==";
+
+            row[10] = 1;
+            row[11] = "company";
+            row[12] = "loc";
+
+            table.Rows.Add(row);
+
+            set.Tables.Add(table);
+
+            return set;
         }
 
         public bool tournamentSignup(int playerId, int tournamentId)

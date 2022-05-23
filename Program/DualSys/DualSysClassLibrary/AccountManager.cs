@@ -132,7 +132,7 @@ namespace  DuelSysClassLibrary
 				{
 					foreach (DataRow row in data.Tables[0].Rows)
 					{
-						company comp = new(Convert.ToInt32(row[11]), Convert.ToString(row[10]), Convert.ToString(12));
+						company comp = new(Convert.ToInt32(row[10]), Convert.ToString(row[11]), Convert.ToString(12));
 						list.Add(new Staff(Convert.ToInt32(row[0]), Convert.ToString(row[1]), Convert.ToString(row[2]), Convert.ToString(row[3])
 							, Convert.ToDateTime(row[4]), Convert.ToChar(row[5]), 
 							Convert.ToString(row[6]), Convert.ToString(row[7]), Convert.ToString(row[8]),
