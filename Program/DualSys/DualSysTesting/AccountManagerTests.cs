@@ -88,8 +88,9 @@ namespace DuelSysClassLibrary.Tests
         [TestMethod()]
         public void GetAccountsSucces()
         {
+            Account expectedAccount = new Account(1, "Benny", "Bob", "benny@gmail.com", DateTime.UtcNow, 'O', "streetAdress 1", "London", "secretPassword", "SuoTJf39E0qXR4792GayJw==");
             List<Account> actual = _accountManager.GetAccounts();
-            Assert.AreEqual(1, actual.Count);
+            Assert.AreEqual(expectedAccount.getEmail(), actual[0].getEmail());
         }
 
         [TestMethod()]
@@ -100,15 +101,20 @@ namespace DuelSysClassLibrary.Tests
         }
 
         [TestMethod()]
-        public void DeleteAccountFail()
+        public void DeleteAccountFailWithInvalidNumber()
         {
             Assert.IsFalse(_accountManager.DeleteAccount(-1));
         }
 
         [TestMethod()]
+        public void DeleteAccountFailWithValidNumber()
+        {
+            Assert.IsFalse(_accountManager.DeleteAccount(1));
+        }
+        [TestMethod()]
         public void DeleteAccountSucces()
         {
-            Assert.IsTrue(_accountManager.DeleteAccount(1));
+            Assert.IsTrue(_accountManager.DeleteAccount(2));
         }
 
         [TestMethod()]

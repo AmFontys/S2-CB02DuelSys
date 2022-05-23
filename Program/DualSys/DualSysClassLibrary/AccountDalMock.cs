@@ -47,7 +47,43 @@ namespace DuelSysClassLibrary
 
         public bool DeleteAccount(int id)
         {
-            return true;
+            DataSet set = new DataSet();
+            DataTable table = new DataTable();
+            DataColumn column =
+                 table.Columns.Add("AccountID", typeof(Int32));
+            table.Columns.Add("Fname", typeof(string));
+            table.Columns.Add("Lname", typeof(string));
+            table.Columns.Add("email", typeof(string));
+            table.Columns.Add("BirthDate", typeof(DateTime));
+            table.Columns.Add("gender", typeof(char));
+            table.Columns.Add("address", typeof(string));
+            table.Columns.Add("town", typeof(string));
+            table.Columns.Add("password", typeof(string));
+            table.Columns.Add("keyword", typeof(string));
+           
+            for (int i = 0; i < 5; i++)
+            {
+                DataRow row = table.NewRow();
+                row[0] = 2+i;
+                row[1] = "fakeName"+i;
+                row[2] = "Bob";
+                row[3] = "benny@gmail.com";
+                row[4] = DateTime.UtcNow;
+                row[5] = 'O';
+                row[6] = $"streetAdress {i}";
+                row[7] = "London";
+                row[8] = "secretPassword";
+                row[9] = "SuoTJf39E0qXR4792GayJw==";
+
+                table.Rows.Add(row);
+            }
+            set.Tables.Add(table);
+
+            bool deleted = false;
+            if (id == Convert.ToInt32(set.Tables[0].Rows[0][0]))
+                return true;
+
+            return deleted;
         }
 
         public DataSet GetAccount(string email)
