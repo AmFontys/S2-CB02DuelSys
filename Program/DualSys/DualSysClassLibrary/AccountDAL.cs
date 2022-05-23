@@ -8,18 +8,23 @@ namespace  DuelSysClassLibrary
 {
 	public class AccountDAL : IAccountDAL
 	{
+        //the method below checks if there are any affected rows while executing the command
 		private bool CheckSingleResult(MySqlCommand command)
 		{
 			if( DBExecuter.ExecuteNoNQuery(command) >0)return true;
             else return false;
 		}
-
+        //the method below checks to see for true or false on mutiple read entries
         private DataSet CheckMultipleResults(MySqlCommand command)
         {
             DataSet ds = DBExecuter.ExecuteReader(command);
-            if (ds.Tables[0].Rows.Count > 0)
+            if (ds.Tables.Count > 0)
             {
-                return ds;
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    return ds;
+                }
+                else return ds;
             }
             else
             {

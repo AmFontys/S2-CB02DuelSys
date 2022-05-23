@@ -128,14 +128,14 @@ namespace DuelSysClassLibrary.Tests
         [TestMethod()]
         public void LoginTestPlayerFail()
         {
-            bool succes = _accountManager.Login("player@mail", "123", "");
+            bool succes = _accountManager.Login("player@mail", "123");
             Assert.IsFalse(succes);
         }
 
         [TestMethod()]
         public void LoginTestPlayerSucces()
         {
-            bool succes = _accountManager.Login("player@mail.com", "123", "");
+            bool succes = _accountManager.Login("player@mail.com", "123");
             Assert.IsTrue(succes);
         }
 

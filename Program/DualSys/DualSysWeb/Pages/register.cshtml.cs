@@ -66,12 +66,13 @@ namespace DuelSysWeb.Pages
 
         public IActionResult OnPost()
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid)//checks to see if the given info is all there and in the correct format
             {
                 AccountDAL dal = new();
                 AccountManager manager = new(dal);
                 if (manager.AddAccount(Fname, Lname, Email, Team, Birthdate, Gender, Address, Town, Password))
                 {
+                    //The clain=m is used to make a person log in to the system
                     List<Claim> claims = new List<Claim>();
                     claims.Add(new Claim(ClaimTypes.Email, Email));
 
