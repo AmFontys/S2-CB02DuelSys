@@ -81,8 +81,9 @@ namespace DuelSysClassLibrary.Tests
         [TestMethod()]
         public void GetPlayersSucces()
         {
-            List<Player> staffs = _accountManager.GetPlayers();
-            Assert.AreEqual(1, staffs.Count);
+            Player expectedAccount = new Player(2, "Jenny", "Lizard", "jenny@gmail.com", "helpfullteam", DateTime.UtcNow, 'F', "streetAdress 1", "London", "secretPassword", "SuoTJf39E0qXR4792GayJw==");
+            List<Player> actual = _accountManager.GetPlayers();
+            Assert.AreEqual(expectedAccount.getTeam(), actual[0].getTeam());
         }
 
         [TestMethod()]
@@ -96,8 +97,9 @@ namespace DuelSysClassLibrary.Tests
         [TestMethod()]
         public void GetStaffSucces()
         {
-            List<Staff> staffs = _accountManager.GetStaff();
-            Assert.AreEqual(1,staffs.Count);
+            Staff expectedAccount = new Staff(1,"Benny","Bob","benny@gmail.com",DateTime.UtcNow,'O',"streetaddress 1","London","secretPassword", "SuoTJf39E0qXR4792GayJw==",new company(1,"c","l"));
+            List<Staff> actual = _accountManager.GetStaff();
+            Assert.AreEqual(expectedAccount.getEmail(), actual[0].getEmail());
         }
 
         [TestMethod()]

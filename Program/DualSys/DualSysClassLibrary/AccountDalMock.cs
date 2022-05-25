@@ -197,8 +197,8 @@ namespace DuelSysClassLibrary
             row[9] = "SuoTJf39E0qXR4792GayJw==";
 
             row[10] = 1;
-            row[11] = "company";
-            row[12] = "loc";
+            row[11] = "c";
+            row[12] = "l";
 
             table.Rows.Add(row);
 

@@ -157,7 +157,7 @@ namespace  DuelSysClassLibrary
 					foreach (DataRow row in data.Tables[0].Rows)
 					{
 						//Making a new company instance with the given info in format of id,name,location
-						company comp = new(Convert.ToInt32(row[10]), Convert.ToString(row[11]), Convert.ToString(12));
+						company comp = new(Convert.ToInt32(row[10]), Convert.ToString(row[11]), Convert.ToString(row[12]));
 						
 						//Making a new instance of the staff class with the info given by the row
 						//the format of this is:

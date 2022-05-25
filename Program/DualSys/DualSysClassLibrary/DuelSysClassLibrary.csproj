@@ -11,4 +11,11 @@
     <PackageReference Include="MySql.Data" Version="8.0.29" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DataLayer\" />
+    <Folder Include="MockClasses\" />
+    <Folder Include="DALInterfaces\" />
+    <Folder Include="Logic\" />
+  </ItemGroup>
+
 </Project>
