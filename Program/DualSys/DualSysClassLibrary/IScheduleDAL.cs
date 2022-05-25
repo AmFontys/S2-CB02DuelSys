@@ -1,0 +1,15 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace DuelSync.Tournament
+{
+	public interface IScheduleDAL
+	{
+		bool StartTournament(List<string> matches);
+
+		bool NextRound(List<string> matches);
+
+		DataSet GetSchedule(int tournamentId);
+	}
+}
