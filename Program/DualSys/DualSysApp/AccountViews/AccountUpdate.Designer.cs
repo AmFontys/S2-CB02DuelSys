@@ -252,9 +252,9 @@
             this.lblSectionName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(122)))), ((int)(((byte)(165)))));
             this.lblSectionName.Location = new System.Drawing.Point(6, 36);
             this.lblSectionName.Name = "lblSectionName";
-            this.lblSectionName.Size = new System.Drawing.Size(378, 35);
+            this.lblSectionName.Size = new System.Drawing.Size(465, 35);
             this.lblSectionName.TabIndex = 21;
-            this.lblSectionName.Text = "New account";
+            this.lblSectionName.Text = "Update account";
             // 
             // panel4
             // 
