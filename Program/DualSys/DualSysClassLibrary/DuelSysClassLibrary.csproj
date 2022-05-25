@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -9,13 +9,6 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Cryptography.KeyDerivation" Version="6.0.5" />
     <PackageReference Include="MySql.Data" Version="8.0.29" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="DataLayer\" />
-    <Folder Include="MockClasses\" />
-    <Folder Include="DALInterfaces\" />
-    <Folder Include="Logic\" />
   </ItemGroup>
 
 </Project>

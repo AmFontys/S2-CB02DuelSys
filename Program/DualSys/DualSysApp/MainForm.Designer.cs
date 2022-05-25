@@ -36,6 +36,7 @@
             this.panelContent = new System.Windows.Forms.Panel();
             this.panelContentHolder = new System.Windows.Forms.Panel();
             this.panelHeader = new System.Windows.Forms.Panel();
+            this.btnTournament = new System.Windows.Forms.Button();
             this.panelRowMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panelContent.SuspendLayout();
@@ -45,6 +46,7 @@
             // panelRowMenu
             // 
             this.panelRowMenu.BackColor = System.Drawing.Color.White;
+            this.panelRowMenu.Controls.Add(this.btnTournament);
             this.panelRowMenu.Controls.Add(this.btnAccount);
             this.panelRowMenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelRowMenu.Location = new System.Drawing.Point(0, 0);
@@ -133,6 +135,21 @@
             this.panelHeader.Size = new System.Drawing.Size(1266, 125);
             this.panelHeader.TabIndex = 3;
             // 
+            // btnTournament
+            // 
+            this.btnTournament.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(13)))), ((int)(((byte)(18)))));
+            this.btnTournament.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnTournament.FlatAppearance.BorderSize = 0;
+            this.btnTournament.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTournament.Font = new System.Drawing.Font("Good Times", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnTournament.ForeColor = System.Drawing.Color.White;
+            this.btnTournament.Location = new System.Drawing.Point(239, 0);
+            this.btnTournament.Name = "btnTournament";
+            this.btnTournament.Size = new System.Drawing.Size(239, 67);
+            this.btnTournament.TabIndex = 8;
+            this.btnTournament.Text = "Tournament";
+            this.btnTournament.UseVisualStyleBackColor = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -160,5 +177,6 @@
         private Panel panelContent;
         private Panel panelContentHolder;
         private Panel panelHeader;
+        private Button btnTournament;
     }
 }
