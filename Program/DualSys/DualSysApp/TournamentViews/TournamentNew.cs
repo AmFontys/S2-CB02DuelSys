@@ -55,7 +55,8 @@ namespace DuelSysApp
             bool succes = false;
             TournamentManager manager = new TournamentManager(new TournamentDAL());
             ITournamentType tournamentType = new RoundRobin();
-            succes = manager.CreateTournament(txtName.Text, txtDescription.Text, (int)nudMin.Value, (int)nudMax.Value, dtpStart.Value, dtpEnd.Value, tournamentType );
+            Sport sport = (Sport)cmbSport.SelectedItem;
+            succes = manager.CreateTournament(txtName.Text, txtDescription.Text, (int)nudMin.Value, (int)nudMax.Value, dtpStart.Value, dtpEnd.Value, tournamentType, sport);
 
             if (!succes) MessageBox.Show("You haven't filled the form in correctly");
             else MessageBox.Show("Tournament Added");

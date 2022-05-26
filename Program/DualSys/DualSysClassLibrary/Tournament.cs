@@ -31,7 +31,7 @@ namespace DuelSysClassLibrary
 			_endDate = end;
 		}
 
-		public Tournament(int id, string name, string description, int min, int max, DateTime startDate, DateTime endDate, ITournamentType type)
+		public Tournament(int id, string name, string description, int min, int max, DateTime startDate, DateTime endDate, ITournamentType type,Sport sport)
 		{
 			_tournamentID = id;
 			_tournamentName = name;
@@ -41,6 +41,7 @@ namespace DuelSysClassLibrary
 			_startDate = startDate;
 			_endDate = endDate;
             _sportType = type;
+			_sport = sport;
         }
 
         public Tournament(int id, string name, string description, int min, int max, string status, DateTime start, DateTime end, List<Match> matches, Sport sport, ITournamentType type)
@@ -110,5 +111,11 @@ namespace DuelSysClassLibrary
         {
 			return _sport;
         }
+
+        public override string ToString()
+        {
+			return $"{_tournamentName} from {_startDate} till {_endDate}";
+        }
+
     }
 }

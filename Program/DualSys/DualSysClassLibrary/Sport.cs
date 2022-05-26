@@ -50,5 +50,11 @@ namespace DuelSysClassLibrary
 			_winCondition2 = win2;
 			_winCondition3 = win3;
 		}
-	}
+
+        public override string ToString()
+        {
+			return $"{_sportName}";
+        }
+
+    }
 }

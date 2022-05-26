@@ -33,16 +33,16 @@ namespace DuelSysApp
 
         internal void LoadData(object data)
         {
-            Tournament account = data as Tournament;
-            id = account.getID();
-            txtName.Text = account.getTournamentName();
-            txtDescription.Text = account.getTournamentDescription();
-            nudMin.Value = account.getMinPlayers();
-            nudMax.Value=account.getMaxPlayers();
-            dtpStart.Value = account.getStartDate();
-            dtpEnd.Value = account.getEndDate();
-            cmbStatus.Text = account.getStatus();
-            cmbSport.Text = account.getSport().getName();
+            Tournament tournament = data as Tournament;
+            id = tournament.getID();
+            txtName.Text = tournament.getTournamentName();
+            txtDescription.Text = tournament.getTournamentDescription();
+            nudMin.Value = tournament.getMinPlayers();
+            nudMax.Value=tournament.getMaxPlayers();
+            dtpStart.Value = tournament.getStartDate();
+            dtpEnd.Value = tournament.getEndDate();
+            cmbStatus.Text = tournament.getStatus();
+            cmbSport.Text = tournament.getSport().getName();
         }
 
 
@@ -50,8 +50,10 @@ namespace DuelSysApp
         {
             TournamentManager manager = new TournamentManager(new TournamentDAL());
 
-            manager.UpdateTournament(id, txtName.Text, txtDescription.Text, Convert.ToInt32(nudMin.Value), Convert.ToInt32(nudMax.Value), cmbStatus.Text, dtpStart.Value, dtpEnd.Value);
+            bool succes= manager.UpdateTournament(id, txtName.Text, txtDescription.Text, Convert.ToInt32(nudMin.Value), Convert.ToInt32(nudMax.Value), cmbStatus.Text, dtpStart.Value, dtpEnd.Value);
 
+            if (!succes) MessageBox.Show("You haven't filled the form in correctly");
+            else MessageBox.Show("Tournament Updated");
         }
     }
 }

@@ -33,22 +33,59 @@ namespace DuelSysClassLibrary
 
         public bool CreateTournament(Tournament tournament)
         {
-            throw new NotImplementedException();
+            MySqlCommand command = new MySqlCommand();
+            command.CommandText = "INSERT INTO `ds_tournament`" +
+                "(`sportID`, `tournamentName`, `tournamentDescription`, `minPlayer`," +
+                " `maxPlayer`, `startDate`, `endDate`, `status`)" +
+                " VALUES (@sportId,@name,@descr,@min,@max,@start,@end,@status) ";
+            command.Parameters.AddWithValue("@sportId",tournament.getSport().getID());
+            command.Parameters.AddWithValue("@name",tournament.getTournamentName());
+            command.Parameters.AddWithValue("@descr",tournament.getTournamentDescription());
+            command.Parameters.AddWithValue("@min",tournament.getMinPlayers());
+            command.Parameters.AddWithValue("@max",tournament.getMaxPlayers());
+            command.Parameters.AddWithValue("@start",tournament.getStartDate());
+            command.Parameters.AddWithValue("@end",tournament.getEndDate());
+            command.Parameters.AddWithValue("@status", "Avaible");
+
+            return CheckSingleResult(command);
         }
 
         public bool UpdateTournament(Tournament tournament)
         {
-            throw new NotImplementedException();
+            MySqlCommand command = new MySqlCommand();
+            command.CommandText = "UPDATE `ds_tournament` SET" +
+                "`tournamentName`=@name, `tournamentDescription`=@descr, `minPlayer`=@min," +
+                " `maxPlayer`=@max, `startDate`=@start, `endDate`=@end, `status`=@status " +
+                "where tournamentID=@tourId";
+            command.Parameters.AddWithValue("@tourId", tournament.getID());
+            command.Parameters.AddWithValue("@name", tournament.getTournamentName());
+            command.Parameters.AddWithValue("@descr", tournament.getTournamentDescription());
+            command.Parameters.AddWithValue("@min", tournament.getMinPlayers());
+            command.Parameters.AddWithValue("@max", tournament.getMaxPlayers());
+            command.Parameters.AddWithValue("@start", tournament.getStartDate());
+            command.Parameters.AddWithValue("@end", tournament.getEndDate());
+            command.Parameters.AddWithValue("@status", tournament.getStatus());
+
+            return CheckSingleResult(command);
         }
 
         public bool DeleteTournament(int id)
         {
-            throw new NotImplementedException();
+            MySqlCommand command = new MySqlCommand();
+            command.CommandText = "DELETE FROM `ds_tournament` where tournamentId=@id;" +
+                "DELETE FROM ds_match where tournamentId=@id;" +
+                "DELETE FROM ds_signup where tournamentId=@id;";
+            command.Parameters.AddWithValue("@id", id);
+            return CheckSingleResult(command);
         }
 
         public DataSet GetTournaments(string status)
         {
-            throw new NotImplementedException();
+            MySqlCommand command = new MySqlCommand();
+            command.CommandText = "select t.*,s.* from ds_tournament as t LEFT JOIN ds_sport as s ON t.sportID=s.sportID  where t.status=@status";
+            command.Parameters.AddWithValue("@status", status);
+            CheckMultipleResults(command, out DataSet data);
+            return data;
         }
 
         public DataSet GetTournament(string name)

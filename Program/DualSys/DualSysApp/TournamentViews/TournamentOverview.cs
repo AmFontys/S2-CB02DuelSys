@@ -73,7 +73,7 @@ namespace DuelSysApp
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            MainForm.Instance.BringNewAccountToFront();
+            MainForm.Instance.BringNewTournamentToFront();
             makeButtonsDissapear();
         }
 
@@ -87,7 +87,7 @@ namespace DuelSysApp
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            MainForm.Instance.BringUpdateAccountToFront(storage);
+            MainForm.Instance.BringUpdateTournamentToFront(storage);
             makeButtonsDissapear();
         }
 

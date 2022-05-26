@@ -10,7 +10,7 @@ namespace DuelSysClassLibrary
 		private ISportDAL _dal;
 		public SportManager(ISportDAL dal)
 		{
-			throw new NotImplementedException();
+			_dal = dal;
 		}
 
 		public List<Sport> GetSports()
