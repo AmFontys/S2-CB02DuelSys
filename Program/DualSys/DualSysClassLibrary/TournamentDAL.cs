@@ -95,7 +95,11 @@ namespace DuelSysClassLibrary
 
         public DataSet GetTournament(int id)
         {
-            throw new NotImplementedException();
+            MySqlCommand command = new MySqlCommand();
+            command.CommandText = "select t.*,s.* from ds_tournament as t LEFT JOIN ds_sport as s ON t.sportID=s.sportID  where t.tournamentID=@id";
+            command.Parameters.AddWithValue("@id", id);
+            CheckMultipleResults(command, out DataSet data);
+            return data;
         }
     }
 }

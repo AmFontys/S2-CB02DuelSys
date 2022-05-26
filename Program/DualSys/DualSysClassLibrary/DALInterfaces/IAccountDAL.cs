@@ -23,7 +23,7 @@ namespace  DuelSysClassLibrary
 
 		bool DeleteAccount(int id);
 
-		bool tournamentSignup(int playerId, int tournamentId);
+		bool tournamentSignup(string playerEmail, int tournamentId);
 
 		DataSet GetAccount(string email);
 

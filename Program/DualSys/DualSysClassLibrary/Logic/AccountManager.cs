@@ -180,9 +180,10 @@ namespace  DuelSysClassLibrary
 			else return false;
 		}
 
-		public bool tournamentSignup(int playerId, int tournamentId)
+		public bool tournamentSignup(string playerEmail, int tournamentId)
 		{
-			throw new NotImplementedException();
+			if (tournamentId > 0) return _dAL.tournamentSignup(playerEmail, tournamentId);
+			else return false;
 		}
 
 		public Player GetAccount(string email)

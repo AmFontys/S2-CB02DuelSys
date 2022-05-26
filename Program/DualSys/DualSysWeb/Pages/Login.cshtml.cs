@@ -21,6 +21,7 @@ namespace DuelSysWeb.Pages
         public string password { get; set; } 
         public void OnGet()
         {
+            if (User != null) HttpContext.SignOutAsync() ; 
         }
 
         public IActionResult OnPost()

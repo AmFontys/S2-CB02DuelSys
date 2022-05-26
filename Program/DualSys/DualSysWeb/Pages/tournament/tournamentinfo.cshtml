@@ -1,0 +1,34 @@
+﻿@page
+@model DuelSysWeb.Pages.tournament.tournamentInfo
+@{
+}
+
+<div class="infobar-grid">
+    <div class="left-infobar">
+        <div class="btn-infoleft">
+<a asp-area="" asp-page="./index">< Go back</a>
+        </div>
+        <div class="text-infobar">
+            <p>The tournament starts at @Model.Tournament.getStartDate() </p>
+            <p>The tournament ends at @Model.Tournament.getEndDate() </p>
+            <p>This is a @Model.Tournament.getSport().getName() tournament  </p>
+            <p>The minium amount of players needed are @Model.Tournament.getMinPlayers() </p>
+            <p>The maxium amount of players needed are @Model.Tournament.getMaxPlayers() </p>
+            
+         </div>
+   </div>
+   <div class="middle-infobar">
+       <div>@Model.Tournament.getTournamentName()</div>
+        <div>
+        <div class="info-description">
+            @Model.Tournament.getTournamentDescription()
+        </div>
+  </div>
+  <div class="footer-infobar">
+      <form method="post">
+          @Model.message
+          <input hidden value="@Model.Tournament.getID()" asp-for="id"/>
+          <button type="submit" value="Submit" />Submit
+      </form>>
+   </div>
+</div>

@@ -176,9 +176,22 @@ namespace  DuelSysClassLibrary
                 return CheckSingleResult(command);
         }
 
-        public bool tournamentSignup(int playerId, int tournamentId)
+        public bool tournamentSignup(string playerEmail, int tournamentId)
         {
-            throw new NotImplementedException();
+            MySqlCommand command = new MySqlCommand();
+            command.CommandText = "select AccountID from `ds_account` where `Email`=@mail";
+            command.Parameters.AddWithValue("@mail", playerEmail);
+            if (!CheckSingleResult(command)) return false;
+
+            command.CommandText = "INSERT INTO `ds_signup` (tournamentID,Playe	ID)"+
+                "Values(@tourID, " +
+                "((SELECT `AccountID` FROM `ds_player` WHERE `AccountID`= " +
+                "(SELECT `AccountID` FROM `ds_account` WHERE `Email`= @email)))";
+            command.Parameters.AddWithValue("@tourID", tournamentId);
+
+            return CheckSingleResult(command);
+
+
         }
 
         public DataSet GetAccount(string email)

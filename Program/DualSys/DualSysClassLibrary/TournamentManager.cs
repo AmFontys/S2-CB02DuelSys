@@ -69,7 +69,19 @@ namespace DuelSysClassLibrary
 
 		public Tournament GetTournament(int id)
 		{
-			throw new NotImplementedException();
+			DataSet data = _dal.GetTournament(id);
+			if (data != null)
+			{
+				Tournament list;
+				DataRow l = data.Tables[0].Rows[0];
+				
+					ITournamentType type = new RoundRobin();
+					Sport sport = new Sport((int)l[9], (string)l[10], (string)l[11]);
+					list =new Tournament((int)l[0], (string)l[2], (string)l[3], (int)l[4], (int)l[5], (string)l[8], (DateTime)l[6], (DateTime)l[7], null, sport, type);
+				
+				return list;
+			}
+			else return null;
 		}
 	}
 }

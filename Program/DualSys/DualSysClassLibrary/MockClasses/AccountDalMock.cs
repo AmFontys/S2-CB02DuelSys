@@ -207,7 +207,7 @@ namespace DuelSysClassLibrary
             return set;
         }
 
-        public bool tournamentSignup(int playerId, int tournamentId)
+        public bool tournamentSignup(string playerEmail, int tournamentId)
         {
             return true;
         }
