@@ -2,13 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DuelSync.Tournament
+namespace DuelSysClassLibrary
 {
 	public class Schedule
 	{
-		public Schedule(Tournament _tournament)
+		Tournament _tournament;
+		public Schedule(Tournament tournament)
 		{
-			throw new NotImplementedException();
+			_tournament=tournament;
 		}
 	}
 }

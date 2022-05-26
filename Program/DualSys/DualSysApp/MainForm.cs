@@ -60,5 +60,37 @@ namespace DuelSysApp
             }
             AccountOverview.Instance.BringToFront();
         }
+
+        public void BringNewTournamentToFront()
+        {
+            if (!panelContentHolder.Controls.Contains(TournamentNew.Instance))
+            {
+                panelContentHolder.Controls.Add(TournamentNew.Instance);
+                AccountNew.Instance.Dock = DockStyle.Fill;
+            }
+            AccountNew.Instance.BringToFront();
+            AccountNew.Instance.emptyForm();
+        }
+        public void BringUpdateTournamentToFront(object data)
+        {
+            if (!panelContentHolder.Controls.Contains(AccountUpdate.Instance))
+            {
+                panelContentHolder.Controls.Add(AccountUpdate.Instance);
+                AccountUpdate.Instance.Dock = DockStyle.Fill;
+            }
+            AccountUpdate.Instance.BringToFront();
+            AccountUpdate.Instance.LoadData(data);
+        }
+
+        private void btnTournament_Click(object sender, EventArgs e)
+        {
+            if (!panelContentHolder.Controls.Contains(TournamentOverview.Instance))
+            {
+                panelContentHolder.Controls.Add(TournamentOverview.Instance);
+                TournamentOverview.Instance.Dock = DockStyle.Fill;
+
+            }
+            TournamentOverview.Instance.BringToFront();
+        }
     }
 }

@@ -1,8 +1,9 @@
+using DuelSysClassLibrary;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DuelSync.Tournament
+namespace DuelSysClassLibrary
 {
 	public class Match
 	{
@@ -14,7 +15,11 @@ namespace DuelSync.Tournament
 
 		public Match(int id, Player player1, Player player2, int score1, int score2)
 		{
-			throw new NotImplementedException();
+			_tournamentId = id;
+			_player1 = player1;
+			_player2 = player2;
+			_scorePlayer1 = score1;
+			_scorePlayer2 = score2;
 		}
 	}
 }

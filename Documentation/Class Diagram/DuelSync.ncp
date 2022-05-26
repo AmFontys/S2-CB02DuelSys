@@ -684,8 +684,8 @@
       <Entity type="Class">
         <Name>Schedule</Name>
         <Access>Public</Access>
-        <Location left="1489" top="690" />
-        <Size width="162" height="216" />
+        <Location left="1501" top="714" />
+        <Size width="228" height="216" />
         <Collapsed>False</Collapsed>
         <Member type="Constructor">public Schedule(Tournament _tournament)</Member>
         <Modifier>None</Modifier>
@@ -693,7 +693,7 @@
       <Entity type="Class">
         <Name>MatchDAL</Name>
         <Access>Public</Access>
-        <Location left="759" top="1589" />
+        <Location left="190" top="1465" />
         <Size width="427" height="216" />
         <Collapsed>False</Collapsed>
         <Member type="Method">private bool CheckSingleResult(MySQlCommand command)</Member>
@@ -703,7 +703,7 @@
       <Entity type="Interface">
         <Name>IMatchDAL</Name>
         <Access>Public</Access>
-        <Location left="1049" top="1313" />
+        <Location left="1051" top="1379" />
         <Size width="373" height="216" />
         <Collapsed>False</Collapsed>
         <Member type="Method">bool CreateMatcht(int tournamentId, int playerId1, int playerId2)</Member>
@@ -725,7 +725,7 @@
       <Entity type="Class">
         <Name>ScheduleDAL</Name>
         <Access>Public</Access>
-        <Location left="1548" top="1313" />
+        <Location left="1548" top="1476" />
         <Size width="427" height="124" />
         <Collapsed>False</Collapsed>
         <Member type="Method">private bool CheckSingleResult(MySQlCommand command)</Member>
@@ -735,7 +735,7 @@
       <Entity type="Interface">
         <Name>IScheduleDAL</Name>
         <Access>Public</Access>
-        <Location left="2033" top="1169" />
+        <Location left="2033" top="1270" />
         <Size width="321" height="124" />
         <Collapsed>False</Collapsed>
         <Member type="Method">bool StartTournament(List&lt;string&gt; matches)</Member>
@@ -745,13 +745,39 @@
       <Entity type="Class">
         <Name>ScheduleManager</Name>
         <Access>Public</Access>
-        <Location left="1548" top="1055" />
+        <Location left="1548" top="1116" />
         <Size width="379" height="162" />
         <Collapsed>False</Collapsed>
         <Member type="Constructor">public ScheduleManager(IScheduleDAL dal, IMatchDAL matchDal)</Member>
         <Member type="Method">public bool StartTournament(ITournamentType type, List&lt;Player&gt; players)</Member>
         <Member type="Method">public bool NextRound(ITournamentType type, int players)</Member>
         <Member type="Method">public List&lt;Schedule&gt; GetSchedule(int tournamentId)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>ISportDAL</Name>
+        <Access>Public</Access>
+        <Location left="1234" top="1094" />
+        <Size width="172" height="78" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">DataSet GetSports()</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>SportDAL</Name>
+        <Access>Public</Access>
+        <Location left="1254" top="957" />
+        <Size width="162" height="77" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>SportManager</Name>
+        <Access>Public</Access>
+        <Location left="896" top="1076" />
+        <Size width="195" height="120" />
+        <Collapsed>False</Collapsed>
+        <Member type="Constructor">public SportManager(IMatchtDAL dal)</Member>
+        <Member type="Method">public List&lt;Sport&gt; GetSports()</Member>
         <Modifier>None</Modifier>
       </Entity>
     </Entities>
@@ -852,8 +878,8 @@
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>1464</X>
-          <Y>775</Y>
+          <X>1476</X>
+          <Y>799</Y>
         </BendPoint>
         <BendPoint relativeToStartShape="False">
           <X>1447</X>
@@ -865,6 +891,10 @@
       <Relationship type="Association" first="12" second="11">
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>903</X>
+          <Y>1411</Y>
+        </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
@@ -887,25 +917,25 @@
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
           <X>2031</X>
-          <Y>1162</Y>
+          <Y>1223</Y>
         </BendPoint>
         <BendPoint relativeToStartShape="False">
           <X>2114</X>
-          <Y>1144</Y>
+          <Y>1245</Y>
         </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="15" second="9">
         <StartOrientation>Vertical</StartOrientation>
-        <EndOrientation>Horizontal</EndOrientation>
+        <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>1728</X>
-          <Y>993</Y>
+          <X>1628</X>
+          <Y>1073</Y>
         </BendPoint>
         <BendPoint relativeToStartShape="False">
-          <X>1714</X>
-          <Y>801</Y>
+          <X>1628</X>
+          <Y>955</Y>
         </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
@@ -923,11 +953,39 @@
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
           <X>1833</X>
-          <Y>1028</Y>
+          <Y>1089</Y>
         </BendPoint>
         <BendPoint relativeToStartShape="False">
           <X>1761</X>
           <Y>530</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Association" first="18" second="2">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>991</X>
+          <Y>1075</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="18" second="16">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Realization" first="17" second="16">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>1335</X>
+          <Y>1065</Y>
         </BendPoint>
       </Relationship>
     </Relationships>

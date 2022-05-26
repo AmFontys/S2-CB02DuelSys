@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DuelSync.Tournament
+namespace DuelSysClassLibrary
 {
 	public interface ITournamentType
 	{
-		static List<string> StartRound(int playerCount);
+		List<string> StartRound(int playerCount);
 
-		static List<string> NextRound(int amountOfPlayers);
+		List<string> NextRound(int amountOfPlayers);
 	}
 }

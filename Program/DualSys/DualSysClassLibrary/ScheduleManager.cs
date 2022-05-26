@@ -1,8 +1,9 @@
+using DuelSysClassLibrary;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DuelSync.Tournament
+namespace DuelSysClassLibrary
 {
 	public class ScheduleManager
 	{

@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DuelSync.Tournament
+namespace DuelSysClassLibrary
 {
 	public class MatchManager
 	{
-		public MatchManager(IMatchtDAL dal)
+		public MatchManager(IMatchDAL dal)
 		{
 			throw new NotImplementedException();
 		}

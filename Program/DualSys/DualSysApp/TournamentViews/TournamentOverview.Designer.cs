@@ -1,4 +1,4 @@
-﻿namespace DuelSysApp.TournamentViews
+﻿namespace DuelSysApp
 {
     partial class TournamentOverview
     {
@@ -178,6 +178,7 @@
             this.lbView.Name = "lbView";
             this.lbView.Size = new System.Drawing.Size(1180, 224);
             this.lbView.TabIndex = 33;
+            this.lbView.SelectedIndexChanged += new System.EventHandler(this.lbView_SelectedIndexChanged);
             // 
             // panel4
             // 
