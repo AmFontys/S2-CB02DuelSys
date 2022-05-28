@@ -209,7 +209,8 @@ namespace DuelSysClassLibrary
 
         public bool tournamentSignup(string playerEmail, int tournamentId)
         {
-            return true;
+            if (tournamentId == 1 & playerEmail == "Bella@gmail.com") return true;
+            else return false;
         }
 
         public bool UpdateAccount(Player player)

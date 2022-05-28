@@ -181,12 +181,12 @@ namespace  DuelSysClassLibrary
             MySqlCommand command = new MySqlCommand();
             command.CommandText = "select AccountID from `ds_account` where `Email`=@mail";
             command.Parameters.AddWithValue("@mail", playerEmail);
-            if (!CheckSingleResult(command)) return false;
+            if (CheckMultipleResults(command).Tables[0].Rows.Count<=0) return false;
 
-            command.CommandText = "INSERT INTO `ds_signup` (tournamentID,Playe	ID)"+
-                "Values(@tourID, " +
-                "((SELECT `AccountID` FROM `ds_player` WHERE `AccountID`= " +
-                "(SELECT `AccountID` FROM `ds_account` WHERE `Email`= @email)))";
+            command.CommandText = "INSERT INTO `ds_signup` (tournamentID,PlayerID) "+
+                " Values(@tourID, " +
+                "(SELECT `AccountID` FROM `ds_player` WHERE `AccountID`= " +
+                "(SELECT `AccountID` FROM `ds_account` WHERE `Email`= @mail)))";
             command.Parameters.AddWithValue("@tourID", tournamentId);
 
             return CheckSingleResult(command);

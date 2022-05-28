@@ -1,6 +1,7 @@
 using DuelSysClassLibrary;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.ComponentModel.DataAnnotations;
 
 namespace DuelSysWeb.Pages.tournament
 {
@@ -8,15 +9,25 @@ namespace DuelSysWeb.Pages.tournament
     {
         public Tournament Tournament { get; set; }
         private TournamentManager manager { get; set; }
-
-        public int id { get; set; }
+        [BindProperty][Required]
+        public int tourId { get; set; }
         public string message { get; set; }
 
-        public void OnGet(int id,string? msg)
+        public IActionResult OnGet(int id,string? msg)
         {
-            manager = new(new TournamentDAL());
+
+            if (id >= 1)
+            {
+                manager = new(new TournamentDAL());
             Tournament = manager.GetTournament(id);
-            message = msg;
+                if (msg != null)
+                    message = msg;
+                return Page();
+            }
+            else
+            {
+                return RedirectToPage("./");
+            }
         }
 
         public IActionResult OnPost()
@@ -24,13 +35,13 @@ namespace DuelSysWeb.Pages.tournament
             if (ModelState.IsValid & User != null)
             {
                 AccountManager accountManager = new AccountManager(new AccountDAL());
-                string playerEmail =  User.FindFirst("email").Value;
-                bool succesfull = accountManager.tournamentSignup(playerEmail, id);
-                if (succesfull) return RedirectToPage($"tournamentInfo?id={id}&msg=succesfull");
-                else return RedirectToPage($"tournamentInfo?id={id}&msg=unsuccesfull");
+                string playerEmail = User.Claims.First().Value;
+                bool succesfull = accountManager.tournamentSignup(playerEmail, tourId);
+                if (succesfull) return this.OnGet(tourId,"succesfull");
+                else return this.OnGet(tourId,"unsuccesfull");
             }
-            else if (User == null) return RedirectToPage("Login");
-            else return Page();
+            else if (User == null) return RedirectToPage("./Login");
+            else return this.OnGet(tourId,"Something whent wrong please try again");
 
         }
         

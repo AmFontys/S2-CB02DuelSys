@@ -120,17 +120,21 @@ namespace DuelSysClassLibrary.Tests
         }
 
         [TestMethod()]
-        public void tournamentSignupFail()
+        public void tournamentSignupFailTournament()
         {
-            //needs to be implented
-            Assert.Fail();
+            Assert.IsFalse(_accountManager.tournamentSignup("Bella@gmail.com", 0));
+        }
+
+        [TestMethod()]
+        public void tournamentSignupFailEmail()
+        {
+            Assert.IsFalse(_accountManager.tournamentSignup("John@gmail.com", 1));
         }
 
         [TestMethod()]
         public void tournamentSignupSucces()
-        {
-            //needs to be implented
-            Assert.Fail();
+        {           
+            Assert.IsTrue(_accountManager.tournamentSignup("Bella@gmail.com", 1));
         }
 
         [TestMethod()]
