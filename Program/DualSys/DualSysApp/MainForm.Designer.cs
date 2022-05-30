@@ -37,6 +37,8 @@
             this.panelContent = new System.Windows.Forms.Panel();
             this.panelContentHolder = new System.Windows.Forms.Panel();
             this.panelHeader = new System.Windows.Forms.Panel();
+            this.btnSchedule = new System.Windows.Forms.Button();
+            this.btnMatch = new System.Windows.Forms.Button();
             this.panelRowMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panelContent.SuspendLayout();
@@ -46,6 +48,8 @@
             // panelRowMenu
             // 
             this.panelRowMenu.BackColor = System.Drawing.Color.White;
+            this.panelRowMenu.Controls.Add(this.btnMatch);
+            this.panelRowMenu.Controls.Add(this.btnSchedule);
             this.panelRowMenu.Controls.Add(this.btnTournament);
             this.panelRowMenu.Controls.Add(this.btnAccount);
             this.panelRowMenu.Dock = System.Windows.Forms.DockStyle.Top;
@@ -151,6 +155,38 @@
             this.panelHeader.Size = new System.Drawing.Size(1266, 125);
             this.panelHeader.TabIndex = 3;
             // 
+            // btnSchedule
+            // 
+            this.btnSchedule.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(13)))), ((int)(((byte)(18)))));
+            this.btnSchedule.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnSchedule.FlatAppearance.BorderSize = 0;
+            this.btnSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSchedule.Font = new System.Drawing.Font("Good Times", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnSchedule.ForeColor = System.Drawing.Color.White;
+            this.btnSchedule.Location = new System.Drawing.Point(478, 0);
+            this.btnSchedule.Name = "btnSchedule";
+            this.btnSchedule.Size = new System.Drawing.Size(239, 67);
+            this.btnSchedule.TabIndex = 9;
+            this.btnSchedule.Text = "Schedule";
+            this.btnSchedule.UseVisualStyleBackColor = false;
+            this.btnSchedule.Click += new System.EventHandler(this.btnSchedule_Click);
+            // 
+            // btnMatch
+            // 
+            this.btnMatch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(13)))), ((int)(((byte)(18)))));
+            this.btnMatch.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnMatch.FlatAppearance.BorderSize = 0;
+            this.btnMatch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMatch.Font = new System.Drawing.Font("Good Times", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnMatch.ForeColor = System.Drawing.Color.White;
+            this.btnMatch.Location = new System.Drawing.Point(717, 0);
+            this.btnMatch.Name = "btnMatch";
+            this.btnMatch.Size = new System.Drawing.Size(239, 67);
+            this.btnMatch.TabIndex = 10;
+            this.btnMatch.Text = "Matches";
+            this.btnMatch.UseVisualStyleBackColor = false;
+            this.btnMatch.Click += new System.EventHandler(this.btnMatch_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -179,5 +215,7 @@
         private Panel panelContentHolder;
         private Panel panelHeader;
         private Button btnTournament;
+        private Button btnMatch;
+        private Button btnSchedule;
     }
 }

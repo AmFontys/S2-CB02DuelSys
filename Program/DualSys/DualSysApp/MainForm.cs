@@ -1,4 +1,5 @@
-﻿using DuelSysApp.AccountViews;
+﻿using DualSysApp;
+using DuelSysApp.AccountViews;
 using DuelSysClassLibrary;
 using System;
 using System.Collections.Generic;
@@ -91,6 +92,30 @@ namespace DuelSysApp
 
             }
             TournamentOverview.Instance.BringToFront();
+        }
+
+        private void btnSchedule_Click(object sender, EventArgs e)
+        {
+            if (!panelContentHolder.Controls.Contains(CreateSchedule.Instance))
+            {
+                panelContentHolder.Controls.Add(CreateSchedule.Instance);
+                CreateSchedule.Instance.Dock = DockStyle.Fill;
+
+            }
+            CreateSchedule.Instance.reloadTournaments();
+            CreateSchedule.Instance.BringToFront();
+        }
+
+        private void btnMatch_Click(object sender, EventArgs e)
+        {
+            if (!panelContentHolder.Controls.Contains(MatchesOverview.Instance))
+            {
+                panelContentHolder.Controls.Add(MatchesOverview.Instance);
+                MatchesOverview.Instance.Dock = DockStyle.Fill;
+
+            }
+            MatchesOverview.Instance.reloadTournaments();
+            MatchesOverview.Instance.BringToFront();
         }
     }
 }
