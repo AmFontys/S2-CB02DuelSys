@@ -26,8 +26,10 @@
   </div>
   <div class="footer-infobar">
       <form method="post">
+          @Model.status;
           <b>@Model.message</b><br />
           <input hidden value="@Model.Tournament.getID()" asp-for="tourId"/>
+          <input hidden value="@Model.Tournament.getStatus()" asp-for="status"/>
           <input type="submit" value="Submit" />
       </form>
    </div>

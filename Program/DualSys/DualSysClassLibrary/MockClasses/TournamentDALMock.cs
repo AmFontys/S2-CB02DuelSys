@@ -30,7 +30,7 @@ namespace DuelSysClassLibrary
 
         public DataSet GetTournaments(string status)
         {
-            if(status== "Avaible" || status=="On going")
+            if(status== "Available" || status=="On going")
             {
                 DataSet data = new DataSet();
                 DataTable table = new DataTable();
@@ -56,7 +56,7 @@ namespace DuelSysClassLibrary
                 row[5] = 8;
                 row[6] = DateTime.UtcNow.AddDays(10);
                 row[7] = DateTime.UtcNow.AddDays(12);
-                row[8] = "Avaible";
+                row[8] = "Available";
                 row[9] = 2;
                 row[10] = "Sport";
                 row[11] = "0-2";   
@@ -100,7 +100,7 @@ namespace DuelSysClassLibrary
                 row[5] = 8;
                 row[6] = DateTime.UtcNow.AddDays(10);
                 row[7] = DateTime.UtcNow.AddDays(12);
-                row[8] = "Avaible";
+                row[8] = "Available";
                 row[9] = 2;
                 row[10] = "Sport";
                 row[11] = "0-2";

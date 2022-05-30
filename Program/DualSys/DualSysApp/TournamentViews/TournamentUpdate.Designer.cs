@@ -266,9 +266,9 @@
             this.cmbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbStatus.FormattingEnabled = true;
             this.cmbStatus.Items.AddRange(new object[] {
-            "finsished",
+            "Finished",
             "On going",
-            "Avaible"});
+            "Available"});
             this.cmbStatus.Location = new System.Drawing.Point(812, 136);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(183, 28);

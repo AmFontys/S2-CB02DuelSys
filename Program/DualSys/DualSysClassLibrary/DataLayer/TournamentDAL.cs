@@ -45,7 +45,7 @@ namespace DuelSysClassLibrary
             command.Parameters.AddWithValue("@max",tournament.getMaxPlayers());
             command.Parameters.AddWithValue("@start",tournament.getStartDate());
             command.Parameters.AddWithValue("@end",tournament.getEndDate());
-            command.Parameters.AddWithValue("@status", "Avaible");
+            command.Parameters.AddWithValue("@status", "Available");
 
             return CheckSingleResult(command);
         }

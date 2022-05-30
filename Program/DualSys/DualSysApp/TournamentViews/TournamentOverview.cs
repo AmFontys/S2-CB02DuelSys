@@ -46,9 +46,9 @@ namespace DuelSysApp
                 {
                     status = "On going";
                 }
-                else if (rbAvaible.Checked)
+                else if (rbAvailable.Checked)
                 {
-                    status = "Avaible";
+                    status = "Available";
                 }
                 List<Tournament> accounts = manager.GetTournaments(status);
                 InsertToView(accounts.ToArray());

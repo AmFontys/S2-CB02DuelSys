@@ -89,8 +89,8 @@ namespace DuelSysClassLibrary.Tests
         public void GetTournamentsTestSucces()
         {
 			List<Tournament> expected = new List<Tournament>();
-			expected.Add(new Tournament(1, "tour", "description", 2, 8, "Avaible", DateTime.UtcNow.AddDays(10), DateTime.UtcNow.AddDays(12), null, new Sport(2, "Sport", "0-2"), new RoundRobin()));
-			List<Tournament> succes = _tournamentManager.GetTournaments("Avaible");
+			expected.Add(new Tournament(1, "tour", "description", 2, 8, "Available", DateTime.UtcNow.AddDays(10), DateTime.UtcNow.AddDays(12), null, new Sport(2, "Sport", "0-2"), new RoundRobin()));
+			List<Tournament> succes = _tournamentManager.GetTournaments("Available");
 			Assert.AreEqual(expected[0].getTournamentDescription(),succes[0].getTournamentDescription());
         }
 
@@ -118,7 +118,7 @@ namespace DuelSysClassLibrary.Tests
         [TestMethod()]
         public void GetTournamentByIDTestSucces()
         {
-           Tournament expected = new Tournament(1, "tour", "description", 2, 8, "Avaible", DateTime.UtcNow.AddDays(10), DateTime.UtcNow.AddDays(12), null, new Sport(2, "Sport", "0-2"), new RoundRobin());
+           Tournament expected = new Tournament(1, "tour", "description", 2, 8, "Available", DateTime.UtcNow.AddDays(10), DateTime.UtcNow.AddDays(12), null, new Sport(2, "Sport", "0-2"), new RoundRobin());
             Tournament succes = _tournamentManager.GetTournament(1);
             Assert.AreEqual(expected.getTournamentName(), succes.getTournamentName());
         }

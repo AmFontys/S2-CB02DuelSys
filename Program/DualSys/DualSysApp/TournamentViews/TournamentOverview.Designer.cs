@@ -34,7 +34,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.rbAvaible = new System.Windows.Forms.RadioButton();
+            this.rbAvailable = new System.Windows.Forms.RadioButton();
             this.rbOnGoing = new System.Windows.Forms.RadioButton();
             this.rbFinished = new System.Windows.Forms.RadioButton();
             this.btnLoad = new System.Windows.Forms.Button();
@@ -113,7 +113,7 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.rbAvaible);
+            this.panel3.Controls.Add(this.rbAvailable);
             this.panel3.Controls.Add(this.rbOnGoing);
             this.panel3.Controls.Add(this.rbFinished);
             this.panel3.Controls.Add(this.btnLoad);
@@ -124,15 +124,15 @@
             this.panel3.Size = new System.Drawing.Size(1209, 130);
             this.panel3.TabIndex = 29;
             // 
-            // rbAvaible
+            // rbAvailable
             // 
-            this.rbAvaible.AutoSize = true;
-            this.rbAvaible.Location = new System.Drawing.Point(400, 99);
-            this.rbAvaible.Name = "rbAvaible";
-            this.rbAvaible.Size = new System.Drawing.Size(80, 24);
-            this.rbAvaible.TabIndex = 30;
-            this.rbAvaible.Text = "Avaible";
-            this.rbAvaible.UseVisualStyleBackColor = true;
+            this.rbAvailable.AutoSize = true;
+            this.rbAvailable.Location = new System.Drawing.Point(400, 99);
+            this.rbAvailable.Name = "rbAvailable";
+            this.rbAvailable.Size = new System.Drawing.Size(80, 24);
+            this.rbAvailable.TabIndex = 30;
+            this.rbAvailable.Text = "Available";
+            this.rbAvailable.UseVisualStyleBackColor = true;
             // 
             // rbOnGoing
             // 
@@ -222,7 +222,7 @@
         private Panel panel1;
         private Button btnUpdate;
         private Panel panel3;
-        private RadioButton rbAvaible;
+        private RadioButton rbAvailable;
         private RadioButton rbOnGoing;
         private RadioButton rbFinished;
         private Button btnLoad;
