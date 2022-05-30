@@ -12,19 +12,16 @@ namespace DuelSysClassLibrary
 			throw new NotImplementedException();
 		}
 
-		public bool StartTournament(ITournamentType type, List<Player> players)
+		public bool StartTournament(Tournament tournamentId)
 		{
 			throw new NotImplementedException();
 		}
 
-		public bool NextRound(ITournamentType type, int players)
+		public bool NextRound(Tournament tournemntId)
 		{
 			throw new NotImplementedException();
 		}
 
-		public List<Schedule> GetSchedule(int tournamentId)
-		{
-			throw new NotImplementedException();
-		}
+		
 	}
 }

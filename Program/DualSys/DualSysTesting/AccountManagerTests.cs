@@ -130,6 +130,11 @@ namespace DuelSysClassLibrary.Tests
         {
             Assert.IsFalse(_accountManager.tournamentSignup("John@gmail.com", 1));
         }
+        [TestMethod()]
+        public void tournamentSignupFailMaxReached()
+        {
+            Assert.IsFalse(_accountManager.tournamentSignup("elly@gmail.com", 2));
+        }
 
         [TestMethod()]
         public void tournamentSignupSucces()

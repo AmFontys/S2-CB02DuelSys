@@ -178,16 +178,20 @@ namespace  DuelSysClassLibrary
 
         public bool tournamentSignup(string playerEmail, int tournamentId)
         {
+            //also check on amount of signups
             MySqlCommand command = new MySqlCommand();
             command.CommandText = "select AccountID from `ds_account` where `Email`=@mail";
             command.Parameters.AddWithValue("@mail", playerEmail);
             if (CheckMultipleResults(command).Tables[0].Rows.Count<=0) return false;
+            command.CommandText = "SELECT ds_tournament.maxPlayer from ds_tournament where ds_tournament.maxPlayer = (select COUNT(ds_signup.PlayerID) FROM ds_signup WHERE tournamentID = @tourId) AND tournamentID = @tourId";
+            command.Parameters.AddWithValue("@tourID", tournamentId);
+            if (CheckMultipleResults(command).Tables[0].Rows.Count > 0) 
+                return false;
 
-            command.CommandText = "INSERT INTO `ds_signup` (tournamentID,PlayerID) "+
+            command.CommandText = "INSERT IGNORE INTO `ds_signup` (tournamentID,PlayerID) " +
                 " Values(@tourID, " +
                 "(SELECT `AccountID` FROM `ds_player` WHERE `AccountID`= " +
                 "(SELECT `AccountID` FROM `ds_account` WHERE `Email`= @mail)))";
-            command.Parameters.AddWithValue("@tourID", tournamentId);
 
             return CheckSingleResult(command);
 

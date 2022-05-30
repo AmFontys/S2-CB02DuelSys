@@ -11,6 +11,5 @@ namespace DuelSysClassLibrary
 
 		bool NextRound(List<string> matches);
 
-		DataSet GetSchedule(int tournamentId);
 	}
 }

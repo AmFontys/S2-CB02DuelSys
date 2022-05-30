@@ -41,9 +41,6 @@ namespace DuelSysClassLibrary
             throw new NotImplementedException();
         }
 
-        public DataSet GetSchedule(int tournamentId)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

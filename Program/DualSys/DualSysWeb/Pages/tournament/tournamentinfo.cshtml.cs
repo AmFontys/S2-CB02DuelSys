@@ -42,7 +42,7 @@ namespace DuelSysWeb.Pages.tournament
 
         public IActionResult OnPost()
         {
-            if (ModelState.IsValid & User != null & status == "Available")
+            if (ModelState.IsValid & User.Claims.Count()>0 & status == "Available")
             {
                 AccountManager accountManager = new AccountManager(new AccountDAL());
                 string playerEmail = User.Claims.First().Value;
@@ -50,9 +50,9 @@ namespace DuelSysWeb.Pages.tournament
                 if (succesfull) return this.OnGet(tourId, "succesfull");
                 else return this.OnGet(tourId, "unsuccesfull");
             }
-            else if (User == null) return RedirectToPage("~/Login");
-            else if (User != null & status == "On going") return RedirectToPage("./TournamentMatches","OnGoing");
-            else if (User != null & status == "Finished") return RedirectToPage("./TournamentMatches","Finished");
+            else if (User.Claims.Count() == 0) return RedirectToPage("~/Login");
+            else if (ModelState.IsValid & User.Claims.Count() > 0  & status == "On going") return RedirectToPage("./TournamentMatches","OnGoing");
+            else if (ModelState.IsValid & User.Claims.Count() > 0 & status == "Finished") return RedirectToPage("./TournamentMatches","Finished");
 
 
             else return this.OnGet(tourId, "Something whent wrong please try again");
