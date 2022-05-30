@@ -48,7 +48,7 @@ namespace DuelSysClassLibrary
 		public List<Tournament> GetTournaments(string status)
 		{
 			DataSet data = _dal.GetTournaments(status);
-			if (data != null)
+			if (data != null & data.Tables.Count>0)
 			{
 				List<Tournament> list = new List<Tournament>();
 				foreach(DataRow l in data.Tables[0].Rows)
@@ -70,7 +70,7 @@ namespace DuelSysClassLibrary
 		public Tournament GetTournament(int id)
 		{
 			DataSet data = _dal.GetTournament(id);
-			if (data != null)
+			if (data != null & data.Tables.Count>0)
 			{
 				Tournament list;
 				DataRow l = data.Tables[0].Rows[0];

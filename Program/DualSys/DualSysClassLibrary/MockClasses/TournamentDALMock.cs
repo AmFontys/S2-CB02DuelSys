@@ -11,59 +11,60 @@ namespace DuelSysClassLibrary
 		
         public bool CreateTournament(Tournament tournament)
         {
-            MySqlCommand command = new MySqlCommand();
-            command.CommandText = "INSERT INTO `ds_tournament`" +
-                "(`sportID`, `tournamentName`, `tournamentDescription`, `minPlayer`," +
-                " `maxPlayer`, `startDate`, `endDate`, `status`)" +
-                " VALUES (@sportId,@name,@descr,@min,@max,@start,@end,@status) ";
-            command.Parameters.AddWithValue("@sportId",tournament.getSport().getID());
-            command.Parameters.AddWithValue("@name",tournament.getTournamentName());
-            command.Parameters.AddWithValue("@descr",tournament.getTournamentDescription());
-            command.Parameters.AddWithValue("@min",tournament.getMinPlayers());
-            command.Parameters.AddWithValue("@max",tournament.getMaxPlayers());
-            command.Parameters.AddWithValue("@start",tournament.getStartDate());
-            command.Parameters.AddWithValue("@end",tournament.getEndDate());
-            command.Parameters.AddWithValue("@status", "Avaible");
-
             return true;
         }
 
         public bool UpdateTournament(Tournament tournament)
         {
-            MySqlCommand command = new MySqlCommand();
-            command.CommandText = "UPDATE `ds_tournament` SET" +
-                "`tournamentName`=@name, `tournamentDescription`=@descr, `minPlayer`=@min," +
-                " `maxPlayer`=@max, `startDate`=@start, `endDate`=@end, `status`=@status " +
-                "where tournamentID=@tourId";
-            command.Parameters.AddWithValue("@tourId", tournament.getID());
-            command.Parameters.AddWithValue("@name", tournament.getTournamentName());
-            command.Parameters.AddWithValue("@descr", tournament.getTournamentDescription());
-            command.Parameters.AddWithValue("@min", tournament.getMinPlayers());
-            command.Parameters.AddWithValue("@max", tournament.getMaxPlayers());
-            command.Parameters.AddWithValue("@start", tournament.getStartDate());
-            command.Parameters.AddWithValue("@end", tournament.getEndDate());
-            command.Parameters.AddWithValue("@status", tournament.getStatus());
-
-            return true;
+            if (tournament.getID() == 1)
+                return true;
+            else return false;
         }
 
         public bool DeleteTournament(int id)
         {
-            MySqlCommand command = new MySqlCommand();
-            command.CommandText = "DELETE FROM `ds_tournament` where tournamentId=@id;" +
-                "DELETE FROM ds_match where tournamentId=@id;" +
-                "DELETE FROM ds_signup where tournamentId=@id;";
-            command.Parameters.AddWithValue("@id", id);
-            return true;
+            if (id == 5)
+                return true;
+            else return false;
         }
 
         public DataSet GetTournaments(string status)
         {
-            MySqlCommand command = new MySqlCommand();
-            command.CommandText = "select t.*,s.* from ds_tournament as t LEFT JOIN ds_sport as s ON t.sportID=s.sportID  where t.status=@status";
-            command.Parameters.AddWithValue("@status", status);
-            
-            return new DataSet();
+            if(status== "Avaible" || status=="On going")
+            {
+                DataSet data = new DataSet();
+                DataTable table = new DataTable();
+                DataColumn column =
+                    table.Columns.Add("TournamentID", typeof(int));
+                    table.Columns.Add("SportTempId", typeof(int));
+                table.Columns.Add("Name", typeof(string));
+                table.Columns.Add("Description", typeof(string));
+                table.Columns.Add("Min", typeof(int));
+                table.Columns.Add("Max", typeof(int));
+                table.Columns.Add("Start", typeof(DateTime));
+                table.Columns.Add("End", typeof(DateTime));
+                table.Columns.Add("Status", typeof(string));
+                table.Columns.Add("SportID", typeof(int));
+                table.Columns.Add("SportName", typeof(string));
+                table.Columns.Add("win", typeof(string));
+
+                DataRow row = table.NewRow();
+                row[0] = 1;
+                row[2] = "tour";
+                row[3] = "description";
+                row[4] = 2;
+                row[5] = 8;
+                row[6] = DateTime.UtcNow.AddDays(10);
+                row[7] = DateTime.UtcNow.AddDays(12);
+                row[8] = "Avaible";
+                row[9] = 2;
+                row[10] = "Sport";
+                row[11] = "0-2";   
+                table.Rows.Add(row);
+                data.Tables.Add(table);
+                return data;
+            }
+            else return new DataSet();
         }
 
         public DataSet GetTournament(string name)
@@ -73,10 +74,41 @@ namespace DuelSysClassLibrary
 
         public DataSet GetTournament(int id)
         {
-            MySqlCommand command = new MySqlCommand();
-            command.CommandText = "select t.*,s.* from ds_tournament as t LEFT JOIN ds_sport as s ON t.sportID=s.sportID  where t.tournamentID=@id";
-            command.Parameters.AddWithValue("@id", id);
-            return new DataSet();
+            if (id==1)
+            {
+                DataSet data = new DataSet();
+                DataTable table = new DataTable();
+                DataColumn column =
+                    table.Columns.Add("TournamentID", typeof(int));
+                table.Columns.Add("SportTempId", typeof(int));
+                table.Columns.Add("Name", typeof(string));
+                table.Columns.Add("Description", typeof(string));
+                table.Columns.Add("Min", typeof(int));
+                table.Columns.Add("Max", typeof(int));
+                table.Columns.Add("Start", typeof(DateTime));
+                table.Columns.Add("End", typeof(DateTime));
+                table.Columns.Add("Status", typeof(string));
+                table.Columns.Add("SportID", typeof(int));
+                table.Columns.Add("SportName", typeof(string));
+                table.Columns.Add("win", typeof(string));
+
+                DataRow row = table.NewRow();
+                row[0] = 1;
+                row[2] = "tour";
+                row[3] = "description";
+                row[4] = 2;
+                row[5] = 8;
+                row[6] = DateTime.UtcNow.AddDays(10);
+                row[7] = DateTime.UtcNow.AddDays(12);
+                row[8] = "Avaible";
+                row[9] = 2;
+                row[10] = "Sport";
+                row[11] = "0-2";
+                table.Rows.Add(row);
+                data.Tables.Add(table);
+                return data;
+            }
+            else return new DataSet();            
         }
     }
 }
