@@ -21,9 +21,9 @@ namespace DuelSysClassLibrary
                 foreach (DataRow item in data.Tables[0].Rows)
                 {
 					if (item[3] != null)
-						list.Add(new Sport((int)item[0], (string)item[1], (string)item[2]));
+						list.Add(new Sport((int)item[0], (string)item[1], (string)item[2]));//the instance of the sport class with only one win condition
 					else
-						list.Add(new Sport((int)item[0], (string)item[1], (string)item[2], (string)item[3], (string)item[4]));
+						list.Add(new Sport((int)item[0], (string)item[1], (string)item[2], (string)item[3], (string)item[4]));//the instance of the sport class with all three conditions
 				}
 				return list;
 
