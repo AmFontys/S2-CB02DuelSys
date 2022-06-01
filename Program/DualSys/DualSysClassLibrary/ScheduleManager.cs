@@ -17,13 +17,14 @@ namespace DuelSysClassLibrary
 
 		public bool StartTournament(Tournament tournamentId,int[] players)
 		{
-			if(players.Length == 0)return false;
-			if (tournamentId == null || tournamentId.getID() <= 0) return false;
+			if (players == null) return false;
+			else if ( players.Length <= 0  )return false;
+			else if (tournamentId == null || tournamentId.getID() <= 0) return false;
 
 			ITournamentType type = tournamentId.getSportType();
 
 			List<string> list = type.StartRound(players);
-			if(list.Count <= 0 | list.Count ==null) return false;
+			if(list.Count < tournamentId.getMinPlayers() | list.Count ==null) return false;
 			return _sDal.StartTournament(list,tournamentId.getID());
 		}
 
