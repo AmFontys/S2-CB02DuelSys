@@ -10,6 +10,7 @@ namespace DuelSysClassLibrary
 		bool CreateTournament(Tournament tournament);
 
 		bool UpdateTournament(Tournament tournament);
+		bool UpdateTournament(int id, string status);
 
 		bool DeleteTournament(int id);
 
@@ -18,5 +19,6 @@ namespace DuelSysClassLibrary
 		DataSet GetTournament(string name);
 
 		DataSet GetTournament(int id);
-	}
+        DataSet GetSignUps(int tourId);
+    }
 }

@@ -36,7 +36,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblTournamentInfo = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbTournament = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -70,7 +70,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(57, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1194, 130);
+            this.panel3.Size = new System.Drawing.Size(1194, 110);
             this.panel3.TabIndex = 197;
             // 
             // lblSectionName
@@ -103,7 +103,7 @@
             // lblTournamentInfo
             // 
             this.lblTournamentInfo.AutoSize = true;
-            this.lblTournamentInfo.Location = new System.Drawing.Point(74, 182);
+            this.lblTournamentInfo.Location = new System.Drawing.Point(63, 169);
             this.lblTournamentInfo.Name = "lblTournamentInfo";
             this.lblTournamentInfo.Size = new System.Drawing.Size(116, 20);
             this.lblTournamentInfo.TabIndex = 201;
@@ -113,26 +113,27 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(74, 144);
+            this.label1.Location = new System.Drawing.Point(63, 133);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(141, 20);
             this.label1.TabIndex = 202;
             this.label1.Text = "Choose Tournament";
             // 
-            // comboBox1
+            // cmbTournament
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(221, 141);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(151, 28);
-            this.comboBox1.TabIndex = 203;
+            this.cmbTournament.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTournament.FormattingEnabled = true;
+            this.cmbTournament.Location = new System.Drawing.Point(221, 125);
+            this.cmbTournament.Name = "cmbTournament";
+            this.cmbTournament.Size = new System.Drawing.Size(458, 28);
+            this.cmbTournament.TabIndex = 203;
+            this.cmbTournament.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // CreateSchedule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cmbTournament);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblTournamentInfo);
             this.Controls.Add(this.panel1);
@@ -159,6 +160,6 @@
         private Panel panel2;
         private Label lblTournamentInfo;
         private Label label1;
-        private ComboBox comboBox1;
+        private ComboBox cmbTournament;
     }
 }

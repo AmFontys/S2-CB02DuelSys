@@ -69,6 +69,18 @@ namespace DuelSysClassLibrary
             return CheckSingleResult(command);
         }
 
+        public bool UpdateTournament(int id, string status)
+        {
+            MySqlCommand command = new MySqlCommand();
+            command.CommandText = "UPDATE `ds_tournament` SET" +
+                "`status`=@status " +
+                "where tournamentID=@tourId";
+            command.Parameters.AddWithValue("@tourId", id);
+            command.Parameters.AddWithValue("@status", status);
+
+            return CheckSingleResult(command);
+        }
+
         public bool DeleteTournament(int id)
         {
             MySqlCommand command = new MySqlCommand();
@@ -98,6 +110,15 @@ namespace DuelSysClassLibrary
             MySqlCommand command = new MySqlCommand();
             command.CommandText = "select t.*,s.* from ds_tournament as t LEFT JOIN ds_sport as s ON t.sportID=s.sportID  where t.tournamentID=@id";
             command.Parameters.AddWithValue("@id", id);
+            CheckMultipleResults(command, out DataSet data);
+            return data;
+        }
+
+        public DataSet GetSignUps(int tourId)
+        {
+            MySqlCommand command = new MySqlCommand();
+            command.CommandText = "select s.PlayerID from ds_signup as s  where s.tournamentID=@id";
+            command.Parameters.AddWithValue("@id", tourId);
             CheckMultipleResults(command, out DataSet data);
             return data;
         }

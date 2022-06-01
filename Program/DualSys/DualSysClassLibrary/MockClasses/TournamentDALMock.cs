@@ -21,6 +21,13 @@ namespace DuelSysClassLibrary
             else return false;
         }
 
+        public bool UpdateTournament(int id, string status)
+        {
+            if (id == 1)
+                return true;
+            else return false;
+        }
+
         public bool DeleteTournament(int id)
         {
             if (id == 5)
@@ -109,6 +116,26 @@ namespace DuelSysClassLibrary
                 return data;
             }
             else return new DataSet();            
+        }
+
+        public DataSet GetSignUps(int tourId)
+        {
+            DataSet set = new DataSet();
+            if (tourId == 1)
+            {
+                DataTable table = new DataTable();
+                DataColumn column =
+                    table.Columns.Add("PlayerID", typeof(int));
+                for (int i = 1; i < 10; i++)
+                {
+                    DataRow row = table.NewRow();
+                    row[0] = i;
+                    table.Rows.Add(row);
+                }
+                set.Tables.Add(table);
+
+            }
+            return set;
         }
     }
 }

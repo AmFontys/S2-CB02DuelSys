@@ -18,6 +18,7 @@ namespace  DuelSysClassLibrary
 			_team = team;
         }
 
+
         public string getTeam()
         {
 			return _team;

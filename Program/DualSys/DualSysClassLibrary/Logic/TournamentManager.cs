@@ -44,6 +44,16 @@ namespace DuelSysClassLibrary
 			}
 			else return false;
 		}
+		public bool UpdateTournament(int id, string status)
+		{
+			//checks if the input is valid for the id 			
+			//also checks if the status is empty
+			if (id >0 & status !=null & status !="")
+			{				
+				return _dal.UpdateTournament(id,status);
+			}
+			else return false;
+		}
 
 		public bool DeleteTournament(int id)
 		{
@@ -93,5 +103,24 @@ namespace DuelSysClassLibrary
 			}
 			else return null;
 		}
+
+		public int[] GetSignUps(int tourId)
+        {
+			List<int>players = new List<int>();
+			DataSet set = _dal.GetSignUps(tourId);
+			if(set.Tables.Count>0)
+			{
+                if (set.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow r in set.Tables[0].Rows)
+                    {					
+						players.Add(Convert.ToInt32( r[0]));
+                    }
+                }
+				
+			}
+			return players.ToArray();
+        }
+
 	}
 }

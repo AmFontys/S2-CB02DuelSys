@@ -64,6 +64,26 @@ namespace DuelSysClassLibrary.Tests
         }
 
         [TestMethod()]
+        public void UpdateTournamentTestOnlyStatusFailByStatus()
+        {
+			bool succes = _tournamentManager.UpdateTournament(1,"");
+			Assert.IsFalse(succes);
+        }
+        [TestMethod()]
+        public void UpdateTournamentTestOnlyStatusFailByID()
+        {
+			bool succes = _tournamentManager.UpdateTournament(-1,"On going");
+			Assert.IsFalse(succes);
+        }
+
+        [TestMethod()]
+        public void UpdateTournamentTestOnlyStatusSucces()
+        {
+			bool succes = _tournamentManager.UpdateTournament(1,"On going");
+			Assert.IsTrue(succes);
+        }
+
+        [TestMethod()]
         public void DeleteTournamentTestInvalidIDFail()
         {
 			bool succes = _tournamentManager.DeleteTournament(0);
@@ -121,6 +141,32 @@ namespace DuelSysClassLibrary.Tests
            Tournament expected = new Tournament(1, "tour", "description", 2, 8, "Available", DateTime.UtcNow.AddDays(10), DateTime.UtcNow.AddDays(12), null, new Sport(2, "Sport", "0-2"), new RoundRobin());
             Tournament succes = _tournamentManager.GetTournament(1);
             Assert.AreEqual(expected.getTournamentName(), succes.getTournamentName());
+        }
+
+        [TestMethod()]
+        public void GetTournamentSignUpsByIDTestSucces()
+        {
+            int[] expected= new int[] { 1, 2, 3, 4, 5, 6, 7,8,9 };
+            int[] actual = _tournamentManager.GetSignUps(1);
+            Assert.AreEqual(expected.Sum(),actual.Sum());
+        }
+
+        [TestMethod()]
+        public void GetTournamentSignUpsByIDTestFail()
+        {
+            List<int> intList = new List<int>();
+            int[] expected = intList.ToArray();
+            int[] actual = _tournamentManager.GetSignUps(-1);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod()]
+        public void GetTournamentSignUpsByPlayerTestFail()
+        {
+            List<int> intList = new List<int>();
+            int[] expected = intList.ToArray();
+            int[] actual = _tournamentManager.GetSignUps(2);
+            Assert.AreEqual(expected, actual);
         }
         
 	}

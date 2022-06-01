@@ -6,8 +6,8 @@ namespace DuelSysClassLibrary
 {
 	public interface ITournamentType
 	{
-		List<string> StartRound(int playerCount);
+		List<string> StartRound(int[] playerCount);
 
-		List<string> NextRound(int amountOfPlayers);
+		List<string> NextRound(int[] amountOfPlayers);
 	}
 }

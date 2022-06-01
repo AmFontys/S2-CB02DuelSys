@@ -31,12 +31,21 @@ namespace DuelSysClassLibrary
             }
         }
 
-        public bool StartTournament(List<string> matches)
+        public bool StartTournament(List<string> matches,int tourId)
         {
-            throw new NotImplementedException();
+            MySqlCommand command = new MySqlCommand();
+            command.CommandText = "SELECT m.TournamentID from ds_match as m where m.TournamentID=@tournamentID;";
+            command.Parameters.AddWithValue("@tournamentID", tourId);
+            if (CheckMultipleResults(command,out _)) 
+                return false;
+            command.CommandText = "";
+
+            foreach (string match in matches)
+                command.CommandText += match;
+            return CheckSingleResult(command);
         }
 
-        public bool NextRound(List<string> matches)
+        public bool NextRound(List<string> matches,int tourId)
         {
             throw new NotImplementedException();
         }

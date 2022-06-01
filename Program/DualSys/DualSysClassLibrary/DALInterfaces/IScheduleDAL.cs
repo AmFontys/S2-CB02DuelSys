@@ -7,9 +7,9 @@ namespace DuelSysClassLibrary
 {
 	public interface IScheduleDAL
 	{
-		bool StartTournament(List<string> matches);
+		bool StartTournament(List<string> matches,int tourId);
 
-		bool NextRound(List<string> matches);
+		bool NextRound(List<string> matches,int tourId);
 
 	}
 }
