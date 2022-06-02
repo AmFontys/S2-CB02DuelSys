@@ -17,6 +17,10 @@ namespace  DuelSysClassLibrary
         {
 			_team = team;
         }
+        public Player(int id,string fname, string lname, string email,string team) : base(id, fname, lname, email)
+        {
+			_team = team;
+        }
 
 
         public string getTeam()

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DuelSysClassLibrary;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,8 @@ namespace DualSysApp
 {
     public partial class MatchesOverview : UserControl
     {
+        private TournamentManager _manager = new TournamentManager(new TournamentDAL());
+        private MatchManager _matchManager = new MatchManager(new MatchDAL());
         private static MatchesOverview _instance;
         public static MatchesOverview Instance
         {
@@ -27,7 +30,20 @@ namespace DualSysApp
 
         public void reloadTournaments()
         {
+            cmbTournaments.Items.Clear();
+            foreach (var l in _manager.GetTournaments("On going"))
+            {
+                cmbTournaments.Items.Add(l);
+            }
+        }
 
+        public void loadMatches(int tournamentId)
+        {
+            lbView.Items.Clear();
+            foreach (var l in _matchManager.GetMatches(tournamentId)) 
+            {
+                lbView.Items.Add((Match)l);
+            }
         }
 
         public MatchesOverview()
@@ -42,6 +58,9 @@ namespace DualSysApp
 
         private void btnLoad_Click(object sender, EventArgs e)
         {
+            if (cmbTournaments.SelectedIndex < 0) return;
+
+            loadMatches(1);
 
         }
     }

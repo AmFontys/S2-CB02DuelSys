@@ -94,6 +94,13 @@ namespace  DuelSysClassLibrary
 			_password = password;
 			_keyword = keyword;
 		}
+		public Account(int id,string fname, string lname, string email)
+		{
+			_id = id;
+			_fname = fname;
+			_lname = lname;
+			_email = email;
+		}
 
        
 

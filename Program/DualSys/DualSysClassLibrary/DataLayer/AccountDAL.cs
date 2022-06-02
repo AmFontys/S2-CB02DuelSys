@@ -24,7 +24,7 @@ namespace  DuelSysClassLibrary
                 {
                     return ds;
                 }
-                else return ds;
+                else return null;
             }
             else
             {

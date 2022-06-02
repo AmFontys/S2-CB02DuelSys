@@ -32,11 +32,11 @@
             this.lblSectionName = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.cmbTournaments = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnLoad = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cmbTournaments = new System.Windows.Forms.ComboBox();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -81,13 +81,31 @@
             this.panel3.Size = new System.Drawing.Size(1220, 141);
             this.panel3.TabIndex = 34;
             // 
+            // cmbTournaments
+            // 
+            this.cmbTournaments.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTournaments.FormattingEnabled = true;
+            this.cmbTournaments.Location = new System.Drawing.Point(528, 96);
+            this.cmbTournaments.Name = "cmbTournaments";
+            this.cmbTournaments.Size = new System.Drawing.Size(450, 28);
+            this.cmbTournaments.TabIndex = 23;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(528, 73);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(118, 20);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "View matches of";
+            // 
             // btnLoad
             // 
             this.btnLoad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(29)))), ((int)(((byte)(49)))));
             this.btnLoad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLoad.Font = new System.Drawing.Font("Good Times", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnLoad.ForeColor = System.Drawing.Color.White;
-            this.btnLoad.Location = new System.Drawing.Point(1031, 74);
+            this.btnLoad.Location = new System.Drawing.Point(984, 74);
             this.btnLoad.Name = "btnLoad";
             this.btnLoad.Size = new System.Drawing.Size(167, 50);
             this.btnLoad.TabIndex = 18;
@@ -110,24 +128,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(57, 477);
             this.panel2.TabIndex = 36;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(726, 104);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(118, 20);
-            this.label1.TabIndex = 22;
-            this.label1.Text = "View matches of";
-            // 
-            // cmbTournaments
-            // 
-            this.cmbTournaments.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTournaments.FormattingEnabled = true;
-            this.cmbTournaments.Location = new System.Drawing.Point(862, 96);
-            this.cmbTournaments.Name = "cmbTournaments";
-            this.cmbTournaments.Size = new System.Drawing.Size(151, 28);
-            this.cmbTournaments.TabIndex = 23;
             // 
             // MatchesOverview
             // 
