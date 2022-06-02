@@ -6,9 +6,10 @@ namespace DuelSysClassLibrary
 {
 	public class MatchManager
 	{
+		private IMatchDAL _dal;
 		public MatchManager(IMatchDAL dal)
 		{
-			throw new NotImplementedException();
+			_dal=dal;
 		}
 
 		public bool CreateMatch(int tournamentId, int playerId1, int playerId2)
