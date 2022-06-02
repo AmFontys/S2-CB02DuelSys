@@ -10,24 +10,29 @@ namespace DuelSysClassLibrary
 	{
 		private bool CheckSingleResult(MySqlCommand command)
 		{
-			throw new NotImplementedException();
-		}
+            if (DBExecuter.ExecuteNoNQuery(command) > 0) return true;
+            else return false;
+        }
 
 		private bool CheckMultipleResults(MySqlCommand command, out DataSet data)
 		{
-            DataSet ds = DBExecuter.ExecuteReader(command);
-            if (ds.Tables.Count > 0)
+            data = DBExecuter.ExecuteReader(command);
+            if (data.Tables.Count > 0)
             {
-                if (ds.Tables[0].Rows.Count > 0)
+                if (data.Tables[0].Rows.Count > 0)
                 {
-                    return ds;
+                    return true;
                 }
-                else return ds;
+                else
+                {
+                    data = null;
+                    return false;
+                }
             }
             else
             {
-                ds = null;
-                return ds;
+                data = null;
+                return false;
             }
         }
 

@@ -21,5 +21,11 @@ namespace DuelSysClassLibrary
 			_scorePlayer1 = score1;
 			_scorePlayer2 = score2;
 		}
-	}
+
+        public override string ToString()
+        {
+			return $"{_player1.getFname()}{_player1.getLname()}  vs  {_player2.getFname()} {_player2.getLname()}  ({_scorePlayer1}:{_scorePlayer2})";
+        }
+
+    }
 }

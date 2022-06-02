@@ -37,7 +37,11 @@ namespace DuelSysClassLibrary
                 {
 					Player p1 = new Player((int)r[5],(string)r[6], (string)r[7], (string)r[8], (string)r[9]);
 					Player p2 = new Player((int)r[10], (string)r[11], (string)r[12], (string)r[13], (string)r[14]);
-					Match newMatch = new Match((int)r[0], p1,p2, (int)r[3], (int)r[4]);
+					Match newMatch;
+					if (r[3].ToString().Length > 0)
+						newMatch = new Match((int)r[0], p1, p2, (int)r[3], (int)r[4]);
+					else
+						newMatch = new Match((int)r[0], p1, p2, 0, 0);
 					matches.Add(newMatch);
                 }
 
