@@ -94,7 +94,10 @@ namespace DuelSysClassLibrary
 				DataRow l = data.Tables[0].Rows[0];
 
 				ITournamentType type = new RoundRobin();
-				Sport sport = new Sport((int)l[9], (string)l[10], (string)l[11]);//make an instance of the sport 
+				Sport sport;
+				if (l[12] == DBNull.Value)
+					sport = new Sport((int)l[9], (string)l[10], (string)l[11]);//make an instance of the sport 
+				else sport = new Sport((int)l[9], (string)l[10], (string)l[11],(string)l[12],(string)l[13]);//make an instance of the sport  
 				//An instance of the tournament is made by the id, the name, the description, the min amount of players, the max amount of players, the status of the tournament
 				//the start date, the end date, the list of matches which is null because it's not needed, the instance of the sport class and the type of system the tournament is using in class form
 				list = new Tournament((int)l[0], (string)l[2], (string)l[3], (int)l[4], (int)l[5], (string)l[8], (DateTime)l[6], (DateTime)l[7], null, sport, type);

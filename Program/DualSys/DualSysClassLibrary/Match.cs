@@ -13,6 +13,30 @@ namespace DuelSysClassLibrary
 		int _scorePlayer1;
 		int _scorePlayer2;
 
+		public int GetTourId()
+		{
+			return _tournamentId;
+		}
+		public Player GetPlayer1()
+        {
+			return _player1;
+        }
+		
+		public Player GetPlayer2()
+        {
+			return _player2;
+        }
+
+		public int GetScore1()
+        {
+			return _scorePlayer1;
+        }
+
+		public int GetScore2()
+        {
+			return _scorePlayer2;
+        }
+
 		public Match(int id, Player player1, Player player2, int score1, int score2)
 		{
 			_tournamentId = id;

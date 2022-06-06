@@ -36,14 +36,21 @@ namespace DuelSysClassLibrary
             }
         }
 
-        public bool CreateMatcht(int tournamentId, int playerId1, int playerId2)
+        public bool CreateMatch(int tournamentId, int playerId1, int playerId2)
         {
             throw new NotImplementedException();
         }
 
-        public bool UpdateMatch(int tournamentId, int score1, int score2)
+        public bool UpdateMatch(int tournamentId,int player1,int player2, int score1, int score2)
         {
-            throw new NotImplementedException();
+            MySqlCommand command = new MySqlCommand();
+            command.CommandText = "UPDATE ds_match SET score1=@s1, score2=@s2 where tournamentID=@tourId AND player1=@p1 AND player2=@p2";
+            command.Parameters.AddWithValue("@tourId",tournamentId);
+            command.Parameters.AddWithValue("@p1",player1);
+            command.Parameters.AddWithValue("@p2",player2);
+            command.Parameters.AddWithValue("@s1",score1);
+            command.Parameters.AddWithValue("@s2",score2);
+            return CheckSingleResult(command);
         }
 
         public DataSet GetMatches(int tournamentId)

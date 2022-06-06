@@ -14,7 +14,10 @@ namespace DualSysApp
     public partial class MatchesOverview : UserControl
     {
         private TournamentManager _manager = new TournamentManager(new TournamentDAL());
-        private MatchManager _matchManager = new MatchManager(new MatchDAL());
+        private MatchManager _matchManager = new MatchManager(new MatchDAL(),new TournamentManager(new TournamentDAL()));
+
+        Match storage;
+
         private static MatchesOverview _instance;
         public static MatchesOverview Instance
         {
@@ -53,7 +56,12 @@ namespace DualSysApp
 
         private void lbView_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if(lbView.SelectedIndex != -1)
+            {
+                storage = (Match)lbView.SelectedItem;
+                MatchForm match = new MatchForm(storage);
+                match.ShowDialog();
+            }
         }
 
         private void btnLoad_Click(object sender, EventArgs e)

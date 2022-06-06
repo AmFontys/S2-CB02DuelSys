@@ -1,0 +1,13 @@
+﻿SELECT COUNT(TournamentID) FROM ds_match
+WHERE Score1>Score2 AND Player1=@player OR Score1<Score2 AND Player2=@player
+
+SELECT CASE(
+p1.TeamName, COUNT(CASE WHEN Score1>Score2 AND score1<score2 then 1 else 0 end) as Score1Win,
+p2.TeamName, COUNT(CASE WHEN Score1>Score2 AND score1<score2 then 1 else 0 end) as Score2Win
+)END as wins
+FROM ds_match
+LEFT JOIN ds_player as p1 on ds_match.Player1=p1.AccountID
+LEFT JOIN ds_player as p2 on ds_match.Player2=p2.AccountID
+where ds_match.Score1 is not null AND ds_match.Score2 is NOT null
+GROUP BY
+p1.TeamName
