@@ -24,6 +24,7 @@ namespace DuelSysClassLibrary
 		{
 			error = "";
 			if (tournamentid <= 0 | score1 < 0 | score2 < 0) return false;
+			if (player <= 0 | player2 < 0 ) return false;
 			Tournament tournament = _tourMan.GetTournament(tournamentid);
 			Sport sport = tournament.getSport();
 			if (sport == null) return false;

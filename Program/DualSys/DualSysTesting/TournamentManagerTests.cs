@@ -142,6 +142,13 @@ namespace DuelSysClassLibrary.Tests
             Tournament succes = _tournamentManager.GetTournament(1);
             Assert.AreEqual(expected.getTournamentName(), succes.getTournamentName());
         }
+        [TestMethod()]
+        public void GetTournamentByIDTestSuccesFinsished()
+        {
+           Tournament expected = new Tournament(2, "tour", "description", 2, 8, "Finsished", DateTime.UtcNow.AddDays(10), DateTime.UtcNow.AddDays(12), null, new Sport(2, "Sport", "0-2"), new RoundRobin());
+            Tournament succes = _tournamentManager.GetTournament(2);
+            Assert.AreEqual(expected.getTournamentName(), succes.getTournamentName());
+        }
 
         [TestMethod()]
         public void GetTournamentSignUpsByIDTestSucces()
