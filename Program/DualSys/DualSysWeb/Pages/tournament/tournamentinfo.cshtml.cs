@@ -51,8 +51,8 @@ namespace DuelSysWeb.Pages.tournament
                 else return this.OnGet(tourId, "unsuccesfull");
             }
             else if (User.Claims.Count() == 0) return RedirectToPage("~/Login");
-            else if (ModelState.IsValid & User.Claims.Count() > 0  & status == "On going") return RedirectToPage("./TournamentMatches","OnGoing");
-            else if (ModelState.IsValid & User.Claims.Count() > 0 & status == "Finished") return RedirectToPage("./TournamentMatches","Finished");
+            else if (ModelState.IsValid & User.Claims.Count() > 0  & status == "On going") return RedirectToPage("./TournamentMatches", new { id = tourId, status = "OnGoing" });
+            else if (ModelState.IsValid & User.Claims.Count() > 0 & status == "Finished") return RedirectToPage("./TournamentMatches",new {id=tourId,status= "Finished" });
 
 
             else return this.OnGet(tourId, "Something whent wrong please try again");

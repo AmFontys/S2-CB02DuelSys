@@ -2,3 +2,30 @@
 @model DuelSysWeb.Pages.tournament.TournamentMatchesModel
 @{
 }
+<br /><br />
+<table class="tmatches">
+<thead>
+  <tr>
+    <th class="tmatchRow">Home Player</th>
+    <th class="tmatchRow">Away Player</th>
+    <th class="tmatchRow">Home Score</th>
+    <th class="tmatchRow">Away Score</th>
+  </tr>
+</thead>
+<tbody>
+ 
+
+
+@if(@Model.Matches.Count>0){
+    @foreach (var item in Model.Matches)
+    {
+      <tr>
+    <td class="tmatchRow">@item.GetPlayer1().getFname()     @item.GetPlayer1().getLname()</td>
+    <td class="tmatchRow">@item.GetPlayer2().getFname()     @item.GetPlayer2().getLname()</td>
+    <td class="tmatchRow">@item.GetScore1()</td>
+    <td class="tmatchRow">@item.GetScore2()</td>
+  </tr>
+    }
+}
+</tbody>
+</table>
