@@ -2,8 +2,30 @@
 @model DuelSysWeb.Pages.tournament.TournamentMatchesModel
 @{
 }
+
+@if (@Model.leaderBoards.Count > 0)
+{
+    <br /><br />
+    <table class="tmatches">
+        <h2 class="tmatchesTitle">Current score board</h2>
+        <thead>
+            <th  class="tmatchRow">Player</th>
+        </thead>
+        <tbody>            
+            
+            @foreach(var board in Model.leaderBoards)
+            { 
+            <tr>
+            <td class="tmatchRow">@board</td>
+            </tr>
+        }   
+        </tbody>
+    </table>
+}
+
 <br /><br />
 <table class="tmatches">
+        <h2 class="tmatchesTitle">Matches</h2>
 <thead>
   <tr>
     <th class="tmatchRow">Home Player</th>

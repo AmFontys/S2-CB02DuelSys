@@ -11,3 +11,19 @@ LEFT JOIN ds_player as p2 on ds_match.Player2=p2.AccountID
 where ds_match.Score1 is not null AND ds_match.Score2 is NOT null
 GROUP BY
 p1.TeamName
+
+
+On score1> score2
+SELECT ds_player.TeamName, COUNT(TournamentID)
+FROM ds_match
+INNER JOIN ds_player on Player1=ds_player.AccountID
+where score1>score2
+GROUP BY ds_player.TeamName
+
+
+On score1<score2
+SELECT ds_player.TeamName, COUNT(TournamentID)
+FROM ds_match
+INNER JOIN ds_player on Player2=ds_player.AccountID
+where score1<score2
+GROUP BY ds_player.TeamName
