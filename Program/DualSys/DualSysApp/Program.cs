@@ -1,4 +1,4 @@
-namespace DualSysApp
+namespace DuelSysApp
 {
     internal static class Program
     {

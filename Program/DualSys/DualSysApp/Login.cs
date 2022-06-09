@@ -1,7 +1,7 @@
 using DuelSysApp;
 using DuelSysClassLibrary;
 
-namespace DualSysApp
+namespace DuelSysApp
 {
     public partial class Login : Form
     {

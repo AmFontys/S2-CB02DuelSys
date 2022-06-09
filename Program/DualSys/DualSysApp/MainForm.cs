@@ -1,4 +1,4 @@
-﻿using DualSysApp;
+﻿using DuelSysApp;
 using DuelSysApp.AccountViews;
 using DuelSysClassLibrary;
 using System;

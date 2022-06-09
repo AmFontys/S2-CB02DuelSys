@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DualSysApp
+namespace DuelSysApp
 {
     public partial class MatchForm : Form
     {

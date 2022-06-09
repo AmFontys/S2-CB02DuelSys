@@ -1,4 +1,4 @@
-﻿namespace DualSysApp
+﻿namespace DuelSysApp
 {
     partial class MatchesOverview
     {
